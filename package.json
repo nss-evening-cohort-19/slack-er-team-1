@@ -1,8 +1,8 @@
 {
-  "name": "next-firebase-starter",
+  "name": "slack-er",
   "private": true,
   "version": "1.0.0",
-  "author": "Trinity Christiana",
+  "author": "Kristen Chandler, Jacob Martin, Joel McAnulty, Rochelle Rossman, Sariah Campopiano",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
