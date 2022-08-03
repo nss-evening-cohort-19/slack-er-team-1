@@ -43,6 +43,8 @@ const updateComment = (commentObj) => new Promise((resolve, reject) => {
     .catch(reject);
 });
 
+/* placeholder for merged data
+
 const viewCommentDetails = (firebaseKey) => new Promise((resolve, reject) => {
   getSingleComment(firebaseKey)
     .then((commentObj) => {
@@ -51,7 +53,7 @@ const viewCommentDetails = (firebaseKey) => new Promise((resolve, reject) => {
           resolve({ commentObj, ...singleCommentObj });
         });
     }).catch((error) => reject(error));
-});
+}); */
 
 export {
   getComments,
@@ -59,5 +61,5 @@ export {
   getSingleComment,
   deleteSingleComment,
   updateComment,
-  viewCommentDetails,
+  // viewCommentDetails,
 };

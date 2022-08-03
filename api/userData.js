@@ -42,6 +42,7 @@ const updateUser = (userObj) => new Promise((resolve, reject) => {
     .then(() => getUsers(userObj.uid)).then(resolve)
     .catch(reject);
 });
+/* placeholder for merge data
 
 const viewUserDetails = (firebaseKey) => new Promise((resolve, reject) => {
   getSingleUser(firebaseKey)
@@ -51,7 +52,7 @@ const viewUserDetails = (firebaseKey) => new Promise((resolve, reject) => {
           resolve({ userObj, ...singleUserObj });
         });
     }).catch((error) => reject(error));
-});
+}); */
 
 export {
   getUsers,
@@ -59,5 +60,5 @@ export {
   getSingleUser,
   deleteSingleUser,
   updateUser,
-  viewUserDetails,
+  // viewUserDetails,
 };

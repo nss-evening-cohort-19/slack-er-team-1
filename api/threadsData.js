@@ -43,6 +43,8 @@ const updateThread = (threadObj) => new Promise((resolve, reject) => {
     .catch(reject);
 });
 
+/* placeholder for merge data
+
 const viewThreadDetails = (firebaseKey) => new Promise((resolve, reject) => {
   getSingleThread(firebaseKey)
     .then((threadObj) => {
@@ -51,7 +53,7 @@ const viewThreadDetails = (firebaseKey) => new Promise((resolve, reject) => {
           resolve({ threadObj, ...singleThreadObj });
         });
     }).catch((error) => reject(error));
-});
+}); */
 
 export {
   getThreads,
@@ -59,5 +61,5 @@ export {
   getSingleThread,
   deleteSingleThread,
   updateThread,
-  viewThreadDetails,
+  // viewThreadDetails,
 };
