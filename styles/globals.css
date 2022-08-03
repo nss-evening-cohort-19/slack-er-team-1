@@ -18,5 +18,40 @@ a {
 }
 
 body {
-  background-color: #88effd;
+  background-color: #1b1d21;
+}
+
+.postCard {
+  width: 100%;
+  color: #cfd0d1;
+}
+
+.postCard:hover {
+  background-color: #232529;
+}
+
+.gutter {
+  display: flex;
+  flex-shrink: 0;
+  margin-right: 8px;
+}
+
+.userProfileHover {
+    display: inline-flex;
+    height: fit-content;
+    width: fit-content;
+}
+
+.photoBtn {
+  background: none;
+  border: 0;
+  color: inherit;
+  cursor: pointer;
+  font: inherit;
+  line-height: inherit;
+  margin: 0;
+  overflow: initial;
+  padding: 0;
+  text-align: initial;
+  vertical-align: initial;
 }
