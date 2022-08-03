@@ -2,17 +2,31 @@ import React from 'react';
 
 export default function Sidebar() {
   return (
-    <div>
-      <button className="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#staticBackdrop" aria-controls="staticBackdrop">
-        Toggle static offcanvas
-      </button>
-
-      <div className="offcanvas offcanvas-start" data-bs-backdrop="static" tabIndex="-1" id="staticBackdrop" aria-labelledby="staticBackdropLabel">
-        <div className="offcanvas-header">
-          <h5 className="offcanvas-title" id="staticBackdropLabel">Offcanvas</h5>
-          <button type="button" className="btn-close" data-bs-dismiss="offcanvas" aria-label="Close" />
+    <div className="offcanvas offcanvas-start show sidebarStyle" data-bs-backdrop="static" tabIndex="-1" id="staticBackdrop" aria-labelledby="staticBackdropLabel">
+      <div className="offcanvas-header">
+        <h5 className="offcanvas-title" id="staticBackdropLabel">Channel Name</h5>
+      </div>
+      <hr />
+      <div className="offcanvas-body">
+        <div>Threads</div>
+        <div>Direct messages</div>
+        <div>Mentions and reactions</div>
+        <div>More</div>
+        <hr />
+        <div className="collapsible">Channels</div>
+        <div className="content">
+          <div>Channel 1</div>
+          <div>Channel 2</div>
+          <div>Channel 3</div>
+          <div>Add channels</div>
         </div>
-        <div className="offcanvas-body" />
+        <br />
+        <div>Direct messages</div>
+        <div>Slack-er Bot</div>
+        <div>Message 1</div>
+        <div>Message 2</div>
+        <div>Message 3</div>
+        <div>Add teammates</div>
       </div>
     </div>
   );
