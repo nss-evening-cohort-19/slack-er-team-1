@@ -8,7 +8,8 @@
     "phoneNumber": "785-518-8571",
     "image": "http://dummyimage.com/146x100.png/cc0000/ffffff",
     "online": true,
-    "uid": "f049d046-c988-40e8-9142-f0ff28d98e3c"
+    "uid": "f049d046-c988-40e8-9142-f0ff28d98e3c",
+    "lastLogin": "6/16/2022, 12:47:21 PM"
   },
   "-N8W4ntGYTGyEMxHF1ND": {
     "firebaseKey": "-N8W4ntGYTGyEMxHF1ND",
@@ -19,7 +20,8 @@
     "phoneNumber": "535-281-2267",
     "image": "http://dummyimage.com/226x100.png/5fa2dd/ffffff",
     "online": false,
-    "uid": "c58c978c-9884-4629-a5f8-7253eb43c57d"
+    "uid": "c58c978c-9884-4629-a5f8-7253eb43c57d",
+    "lastLogin": "6/16/2022, 1:10:04 PM"
   },
   "-N8W4ntIt5TgN0_CL_IF": {
     "firebaseKey": "-N8W4ntIt5TgN0_CL_IF",
@@ -30,7 +32,8 @@
     "phoneNumber": "406-838-5094",
     "image": "http://dummyimage.com/175x100.png/cc0000/ffffff",
     "online": true,
-    "uid": "6c652660-faa2-405e-ace9-2647220325fc"
+    "uid": "6c652660-faa2-405e-ace9-2647220325fc",
+    "lastLogin": "6/16/2022, 2:45:22 PM"
   },
   "-N8W4ntMjDbYnN98MYar": {
     "firebaseKey": "-N8W4ntMjDbYnN98MYar",
@@ -41,7 +44,8 @@
     "phoneNumber": "439-474-5578",
     "image": "http://dummyimage.com/197x100.png/5fa2dd/ffffff",
     "online": false,
-    "uid": "4ef4c97b-7c89-4c93-b9e4-0f30784cd7ea"
+    "uid": "4ef4c97b-7c89-4c93-b9e4-0f30784cd7ea",
+    "lastLogin": "6/16/2022, 2:45:22 PM"
   },
   "-N8W4ntPYc2CYJKoFBmc": {
     "firebaseKey": "-N8W4ntPYc2CYJKoFBmc",
@@ -52,6 +56,7 @@
     "phoneNumber": "681-663-1767",
     "image": "http://dummyimage.com/126x100.png/dddddd/000000",
     "online": false,
-    "uid": "7f146d45-4b24-4d30-a0cf-6f96f261b4fe"
+    "uid": "7f146d45-4b24-4d30-a0cf-6f96f261b4fe",
+    "lastLogin": "6/16/2022, 1:10:04 PM"
   }
 }
