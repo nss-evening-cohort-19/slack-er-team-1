@@ -22,6 +22,7 @@ body {
   background-color: #88effd;
 }
 
+<<<<<<< HEAD
 .sidebarStyle {
   text-align: left;
   max-width: 260px;
@@ -31,4 +32,9 @@ body {
 
 .offcanvas {
   overflow: auto;
+=======
+.commentInput {
+  height: 142px;
+  width: 900px;
+>>>>>>> main
 }
