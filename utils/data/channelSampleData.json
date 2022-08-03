@@ -1,0 +1,20 @@
+{
+  "-N8W5sioWI_ryoUcfrpZ": {
+    "firebaseKey": "-N8W5sioWI_ryoUcfrpZ",
+    "channelName": "Span",
+    "public": true,
+    "uid": "05b2117a-c8a0-400d-9d61-20624dae7197"
+  },
+  "-N8W5siqiLBksINLi_wz": {
+    "firebaseKey": "-N8W5siqiLBksINLi_wz",
+    "channelName": "Quo Lux",
+    "public": false,
+    "uid": "de2efa70-7be2-4fdb-ac3d-b953885df538"
+  },
+  "-N8W5siqiLBksINLi_x-": {
+    "firebaseKey": "-N8W5siqiLBksINLi_x-",
+    "channelName": "Hatity",
+    "public": true,
+    "uid": "81af861f-8cec-444f-b9f1-e56f6c54971e"
+  }
+}
