@@ -63,3 +63,23 @@ body {
   flex-flow: row wrap;
   font-family: 'Lato', sans-serif;
 }
+
+.editMessage {
+  background-color: #1b1d21;
+  color: white;
+  border: none;
+}
+
+.deleteMessage {
+  background-color: #1b1d21;
+  color: white;
+  border: none;
+}
+
+.editMessage:hover {
+  background-color: #232529;
+}
+
+.deleteMessage:hover {
+  background-color: #232529;
+}

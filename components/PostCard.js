@@ -13,6 +13,8 @@ export default function PostCard() {
         <div className="panel-body">Message content here</div>
         <div className="panel-body">Reactions here</div>
         <div className="panel-body">Replies here</div>
+        <button type="button" className="editMessage">Edit Message</button>
+        <button type="button" className="deleteMessage">Delete Message</button>
       </div>
     </div>
   );
