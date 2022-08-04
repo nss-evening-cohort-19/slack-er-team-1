@@ -1,10 +1,10 @@
+import Sidebar from '../components/Sidebar';
 import { signOut } from '../utils/auth';
 import { useAuth } from '../utils/context/authContext';
 import TextInput from '../components/TextInput';
 
 function Home() {
   const { user } = useAuth();
-
   return (
     <>
       <div
@@ -22,10 +22,10 @@ function Home() {
           Sign Out
         </button>
       </div>
-
+      <br />
+      <Sidebar />
       <TextInput />
     </>
   );
 }
-
 export default Home;
