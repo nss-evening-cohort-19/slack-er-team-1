@@ -14,9 +14,10 @@ function Signin() {
     >
       <h1>Hi there!</h1>
       <p>Click the button below to login!</p>
-      <button type="button" className="btn btn-danger" onClick={signIn}>Sign In</button>
+      <button type="button" className="btn btn-primary btn-lg copy-btn" onClick={signIn}>
+        Sign In
+      </button>
     </div>
   );
 }
-
 export default Signin;
