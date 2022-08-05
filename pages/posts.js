@@ -1,7 +1,7 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect, useState } from 'react';
 import PostCard from '../components/PostCard';
-import Search from '../components/Search';
+// import Search from '../components/Search';
 import { getPosts } from '../api/postsData';
 
 export default function Posts() {
@@ -23,7 +23,7 @@ export default function Posts() {
     <>
       <div className="text-center my-4 teamCardsDiv">
         <div className="postsHeaderDiv">
-          <Search posts={posts} setFilteredPosts={setFilteredPosts} />
+          {/* <Search posts={posts} setFilteredPosts={setFilteredPosts} /> */}
         </div>
         <div className="d-flex flex-wrap postsCardContainer">
           {filteredPosts.map((post) => (
