@@ -16,6 +16,19 @@ const getChannels = (uid) => new Promise((resolve, reject) => {
     .catch(reject);
 });
 
+// GET SINGLE CHANNEL
+const getSingleChannel = (firebaseKey) => new Promise((resolve, reject) => {
+  axios.get(`${dbUrl}/channels/${firebaseKey}.json`)
+    .then((response) => {
+      if (response.data) {
+        resolve(Object.values(response.data));
+      } else {
+        resolve([]);
+      }
+    })
+    .catch(reject);
+});
+
 // CREATE CHANNEL
 const createChannel = (newChannelObj) => new Promise((resolve, reject) => {
   axios.post(`${dbUrl}/channels.json`, newChannelObj)
@@ -45,6 +58,7 @@ const deleteChannel = (firebaseKey) => new Promise((resolve, reject) => {
 
 export {
   getChannels,
+  getSingleChannel,
   createChannel,
   updateChannel,
   deleteChannel,
