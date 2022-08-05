@@ -1,4 +1,5 @@
 import React from 'react';
+import Link from 'next/link';
 
 export default function Sidebar() {
   return (
@@ -13,13 +14,22 @@ export default function Sidebar() {
         <div>Mentions and reactions</div>
         <div>More</div>
         <hr />
-        <div className="collapsible">Channels</div>
+        <div className="dropdown">
+          <button className="btn btn-dark btn-sm dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Channels
+          </button>
+          <ul className="dropdown-menu">
+            <li><Link className="dropdown-item" href="/">Action</Link></li>
+            <li><Link className="dropdown-item" href="/">+ Add channel</Link></li>
+          </ul>
+        </div>
+        {/* <div className="collapsible">Channels</div>
         <div className="content">
           <div>Channel 1</div>
           <div>Channel 2</div>
           <div>Channel 3</div>
           <div>Add channels</div>
-        </div>
+        </div> */}
         <br />
         <div>Direct messages</div>
         <div>Slack-er Bot</div>
