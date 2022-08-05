@@ -15,6 +15,18 @@ const getPosts = (uid) => new Promise((resolve, reject) => {
     .catch((error) => reject(error));
 });
 
+const getAllPosts = () => new Promise((resolve, reject) => {
+  axios.get(`${dbUrl}/posts.json?`)
+    .then((response) => {
+      if (response.data) {
+        resolve(Object.values(response.data));
+      } else {
+        resolve([]);
+      }
+    })
+    .catch((error) => reject(error));
+});
+
 const createPost = (postObj) => new Promise((resolve, reject) => {
   axios.post(`${dbUrl}/posts.json?`, postObj)
     .then((response) => {
@@ -55,4 +67,5 @@ export {
   deleteSinglePost,
   updatePost,
   getPostsByChannel,
+  getAllPosts,
 };
