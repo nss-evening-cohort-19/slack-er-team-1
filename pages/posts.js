@@ -2,22 +2,24 @@
 import React, { useEffect, useState } from 'react';
 import PostCard from '../components/PostCard';
 // import Search from '../components/Search';
-import { getPosts } from '../api/postsData';
+import { getAllPosts } from '../api/postsData';
 
 export default function Posts() {
   const [posts, setPosts] = useState([]);
   const [filteredPosts, setFilteredPosts] = useState([]);
 
-  const getAllPosts = () => {
-    getPosts().then((post) => {
-      setPosts(post);
-      setFilteredPosts(post);
+  const getThePosts = () => {
+    getAllPosts().then((postArray) => {
+      setPosts(postArray);
+      setFilteredPosts(postArray);
     });
   };
 
   useEffect(() => {
-    getAllPosts();
+    getThePosts();
   }, []);
+
+  console.warn(posts);
 
   return (
     <>
@@ -26,8 +28,8 @@ export default function Posts() {
           {/* <Search posts={posts} setFilteredPosts={setFilteredPosts} /> */}
         </div>
         <div className="d-flex flex-wrap postsCardContainer">
-          {filteredPosts.map((post) => (
-            <PostCard key={post.firebaseKey} postObj={posts} onUpdate={getAllPosts} />
+          {filteredPosts?.map((post) => (
+            <PostCard key={post?.firebaseKey} postObj={post} onUpdate={getThePosts} />
           ))}
         </div>
       </div>

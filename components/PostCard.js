@@ -22,11 +22,13 @@ export default function PostCard({ postObj }) {
 }
 
 PostCard.propTypes = {
-  postObj: PropTypes.shape({
-    posterPhoto: PropTypes.string,
-    posterName: PropTypes.string,
-    timeStamp: PropTypes.string,
-    content: PropTypes.string,
-    reactions: PropTypes.string,
-  }).isRequired,
+  postObj: PropTypes.arrayOf(PropTypes.shape(
+    {
+      posterPhoto: PropTypes.string,
+      posterName: PropTypes.string,
+      timeStamp: PropTypes.string,
+      content: PropTypes.string,
+      reactions: PropTypes.string,
+    },
+  )).isRequired,
 };
