@@ -7,12 +7,12 @@ function Channel({ channelObj }) {
       <nav className="navbar bg-light">
         <div className="container-fluid">
           <span className="navbar-text">
-            {channelObj?.channelName}
+            channel name
           </span>
         </div>
       </nav>
-      <div className="container-fluid">
-        ...
+      <div className="container-fluid post-container">
+        {channelObj}
       </div>
     </div>
   );
