@@ -2,7 +2,7 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import React from 'react';
 import Link from 'next/link';
-import Search from './Search';
+// import Search from './Search';
 import { signOut } from '../utils/auth';
 import { useAuth } from '../utils/context/authContext';
 
@@ -30,7 +30,7 @@ export default function NavBar() {
               </Link>
             </li>
             <div>
-              <Search />
+              {/* <Search /> */}
             </div>
             <button type="button" className="btn btn-danger" onClick={signOut}>
               Sign Out
