@@ -17,7 +17,7 @@ function CreateUserForm({ obj }) {
   const [, setProfile] = useState([]);
   const router = useRouter();
   const { user } = useAuth();
-
+  console.warn(user.uid);
   useEffect(() => {
     getUsers(user.uid).then(setProfile);
     if (obj.firebaseKey) setFormInput(obj);
