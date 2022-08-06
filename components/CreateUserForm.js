@@ -23,13 +23,13 @@ function CreateUserForm({ obj }) {
     if (obj.firebaseKey) setFormInput(obj);
   }, [obj, user]);
 
-  // const handleChange = (e) => {
-  //   const { name, value } = e.target;
-  //   setFormInput((prevState) => ({
-  //     ...prevState,
-  //     [name]: value,
-  //   }));
-  // };
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormInput((prevState) => ({
+      ...prevState,
+      [name]: value,
+    }));
+  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -43,7 +43,18 @@ function CreateUserForm({ obj }) {
     }
   };
   return (
-    <form onSubmit={handleSubmit} />
+    <>
+      <form onSubmit={handleSubmit}>
+        <input type="text" name="name" value={formInput.name} className="form-control" placeholder="First and Last Name" onChange={handleChange} />
+        <input type="text" name="tagline" value={formInput.tagline} className="form-control" placeholder="What's your tagline?" onChange={handleChange} />
+        <input type="email" name="email" value={formInput.email} className="form-control" placeholder="E-mail Address" onChange={handleChange} />
+        <input type="tel" name="phone" value={formInput.phone} className="form-control" placeholder="Phone Number" onChange={handleChange} />
+        <input type="URL" name="imageUrl" value={formInput.imageUrl} className="form-control" placeholder="Profile Image URL" onChange={handleChange} />
+        <button type="submit" className="btn btn-primary">
+          Submit
+        </button>
+      </form>
+    </>
   );
 }
 
