@@ -1,18 +1,22 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import Sidebar from './Sidebar';
+import TextInput from './TextInput';
 
 function Channel({ channelObj }) {
   return (
     <div>
+      <Sidebar />
       <nav className="navbar bg-light">
         <div className="container-fluid">
           <span className="navbar-text">
-            channel name
+            {channelObj?.channelName}
           </span>
         </div>
       </nav>
       <div className="container-fluid post-container">
-        {channelObj}
+        ...
+        <TextInput />
       </div>
     </div>
   );

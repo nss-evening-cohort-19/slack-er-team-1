@@ -1,7 +1,16 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import Link from 'next/link';
+import { useAuth } from '../utils/context/authContext';
+import { getChannels } from '../api/channelData';
 
 export default function Sidebar() {
+  const [channelList, setChannelList] = useState([]);
+  const { user } = useAuth();
+
+  useEffect(() => {
+    getChannels(user.uid).then(setChannelList);
+  }, [user.uid]);
+
   return (
     <div className="offcanvas offcanvas-start show sidebarStyle" data-bs-backdrop="static" tabIndex="-1" id="staticBackdrop" aria-labelledby="staticBackdropLabel">
       <div className="offcanvas-header">
@@ -19,17 +28,10 @@ export default function Sidebar() {
             Channels
           </button>
           <ul className="dropdown-menu">
-            <li><Link className="dropdown-item" href="/">Action</Link></li>
+            {channelList.map((channel) => <li><Link className="dropdown-item" href={`/channel/${channel.firebaseKey}`}>{channel.channelName}</Link></li>)}
             <li><Link className="dropdown-item" href="/">+ Add channel</Link></li>
           </ul>
         </div>
-        {/* <div className="collapsible">Channels</div>
-        <div className="content">
-          <div>Channel 1</div>
-          <div>Channel 2</div>
-          <div>Channel 3</div>
-          <div>Add channels</div>
-        </div> */}
         <br />
         <div>Direct messages</div>
         <div>Slack-er Bot</div>

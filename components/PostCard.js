@@ -22,7 +22,7 @@ export default function PostCard({ postObj }) {
 }
 
 PostCard.propTypes = {
-  postObj: PropTypes.arrayOf(PropTypes.shape(
+  postObj: PropTypes.shape(
     {
       posterPhoto: PropTypes.string,
       posterName: PropTypes.string,
@@ -30,5 +30,5 @@ PostCard.propTypes = {
       content: PropTypes.string,
       reactions: PropTypes.string,
     },
-  )).isRequired,
+  ).isRequired,
 };
