@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
-import Channel from '../../components/Channel';
+import Channel from '../../components/channels/Channel';
 import { getSingleChannel } from '../../api/channelData';
 
 export default function SingleChannel() {
