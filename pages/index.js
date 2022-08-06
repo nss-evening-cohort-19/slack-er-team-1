@@ -3,8 +3,8 @@ import React, { useEffect, useState } from 'react';
 import CreateUserForm from '../components/CreateUserForm';
 import PostCard from '../components/PostCard';
 import Sidebar from '../components/Sidebar';
-import TextInput from '../components/TextInput';
 import { getAllPosts } from '../api/postsData';
+// import Channel from '../components/Channel';
 
 function Home() {
   const [posts, setPosts] = useState([]);
@@ -24,6 +24,7 @@ function Home() {
     <div>
       <br />
       <Sidebar />
+      {/* <Channel /> */}
       <CreateUserForm />
       <div className="postCardsDiv">
         <div className="text-center my-4 teamCardsDiv">
@@ -34,7 +35,6 @@ function Home() {
           </div>
         </div>
       </div>
-      <TextInput />
     </div>
   );
 }
