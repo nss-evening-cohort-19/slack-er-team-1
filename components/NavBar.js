@@ -5,6 +5,7 @@ import Link from 'next/link';
 // import Search from './Search';
 import { signOut } from '../utils/auth';
 import { useAuth } from '../utils/context/authContext';
+import ProfileDropdown from './ProfileDropdown';
 
 export default function NavBar() {
   const { user } = useAuth();
@@ -35,20 +36,13 @@ export default function NavBar() {
             <button type="button" className="btn btn-danger" onClick={signOut}>
               Sign Out
             </button>
-            <Link passHref href="/profile">
+            <div className="dropdown">
               <a>
                 <img src={user.photoURL} alt="user" className="user-icon" />
               </a>
-            </Link>
-            <div className="dropdown">
-              <button className="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenu2" data-bs-toggle="dropdown" aria-expanded="false">
-                Dropdown
-              </button>
-              <ul className="dropdown-menu" aria-labelledby="dropdownMenu2">
-                <li><button className="dropdown-item" type="button">Action</button></li>
-                <li><button className="dropdown-item" type="button">Another action</button></li>
-                <li><button className="dropdown-item" type="button">Something else here</button></li>
-              </ul>
+              <div className="dropdown-menu" aria-labelledby="dropdownMenu2">
+                <ProfileDropdown />
+              </div>
             </div>
           </ul>
         </div>
