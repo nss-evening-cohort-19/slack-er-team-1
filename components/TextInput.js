@@ -2,23 +2,33 @@ import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import { useRouter } from 'next/router';
 import { useAuth } from '../utils/context/authContext';
-import { createUser, getUsers, updateUser } from '../api/userData';
+import { createPost, getPosts, updatePost } from '../api/postsData';
+import { getSingleChannel } from '../api/channelData';
 
 const initialState = {
   postContent: '',
 };
 
-function TextInputForm({ postObj }) {
+function TextInput({ postObj, channelObj }) {
   const [formInput, setFormInput] = useState(initialState);
+  const [posts, setPosts] = useState(initialState);
   const [, setProfile] = useState([]);
   const router = useRouter();
   const { user } = useAuth();
-  console.warn(user);
+
+  const getAllThePosts = () => {
+    getPosts().then((post) => {
+      setPosts(post);
+    });
+  };
 
   useEffect(() => {
-    getUsers(user.uid).then(setProfile);
+    getAllThePosts();
+    getPosts(user.uid).then(setProfile);
     if (postObj.firebaseKey) setFormInput(postObj);
-  }, [postObj, user]);
+
+    getSingleChannel().then(channelObj);
+  }, [postObj, user, channelObj]);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -31,15 +41,17 @@ function TextInputForm({ postObj }) {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (postObj.firebaseKey) {
-      updateUser(formInput).then(() => router.push('/'));
+      updatePost(formInput).then(() => router.push('/'));
     } else {
       const payload = {
         ...formInput,
         uid: user.uid,
-        lastLogin: new Date().toLocaleString(),
-        timeZone: Intl.DateTimeFormat().resolvedOptions().timeZone,
+        timeStamp: new Date().toLocaleString(),
+        posterPhoto: user.photoURL,
+        posterName: user.displayName,
+        channelId: channelObj.firebaseKey,
       };
-      createUser(payload).then(() => {
+      createPost(payload).then(() => {
         router.push('/');
       });
     }
@@ -47,11 +59,7 @@ function TextInputForm({ postObj }) {
   return (
     <>
       <form className="commentInputContainer" onSubmit={handleSubmit}>
-        <input required type="text" name="name" value={formInput.name} className="form-control" placeholder="First and Last Name" onChange={handleChange} />
-        <input required type="text" name="tagline" value={formInput.tagline} className="form-control" placeholder="What's your tagline?" onChange={handleChange} />
-        <input required type="email" name="email" value={formInput.email} className="form-control" placeholder="E-mail Address" onChange={handleChange} />
-        <input required type="tel" name="phone" value={formInput.phone} className="form-control" placeholder="Phone Number" onChange={handleChange} />
-        <input required type="URL" name="imageUrl" value={formInput.imageUrl} className="form-control" placeholder="Profile Image URL" onChange={handleChange} />
+        <input required type="text" name="postContent" value={formInput.postContent} obj={posts} className="form-control" placeholder="Message Channel" onChange={handleChange} />
         <button type="submit" className="btn btn-primary">
           Submit
         </button>
@@ -60,21 +68,26 @@ function TextInputForm({ postObj }) {
   );
 }
 
-TextInputForm.propTypes = {
+TextInput.propTypes = {
   postObj: PropTypes.shape({
-    name: PropTypes.string,
-    tagline: PropTypes.string,
-    email: PropTypes.string,
-    phone: PropTypes.string,
-    imageUrl: PropTypes.string,
     firebaseKey: PropTypes.string,
-    lastLogin: PropTypes.string,
-    timeZone: PropTypes.string,
+    timeStamp: PropTypes.string,
+    postContent: PropTypes.string,
+    channelId: PropTypes.string,
+    tagId: PropTypes.string,
+    uid: PropTypes.string,
+    posterPhoto: PropTypes.string,
+    posterName: PropTypes.string,
+    reactions: PropTypes.string,
+  }),
+  channelObj: PropTypes.shape({
+    firebaseKey: PropTypes.string,
   }),
 };
 
-TextInputForm.defaultProps = {
+TextInput.defaultProps = {
   postObj: initialState,
+  channelObj: initialState,
 };
 
-export default TextInputForm;
+export default TextInput;
