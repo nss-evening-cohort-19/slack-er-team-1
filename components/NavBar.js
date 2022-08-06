@@ -40,6 +40,16 @@ export default function NavBar() {
                 <img src={user.photoURL} alt="user" className="user-icon" />
               </a>
             </Link>
+            <div className="dropdown">
+              <button className="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenu2" data-bs-toggle="dropdown" aria-expanded="false">
+                Dropdown
+              </button>
+              <ul className="dropdown-menu" aria-labelledby="dropdownMenu2">
+                <li><button className="dropdown-item" type="button">Action</button></li>
+                <li><button className="dropdown-item" type="button">Another action</button></li>
+                <li><button className="dropdown-item" type="button">Something else here</button></li>
+              </ul>
+            </div>
           </ul>
         </div>
       </div>

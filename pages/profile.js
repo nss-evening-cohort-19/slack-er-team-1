@@ -7,7 +7,7 @@ export default function Profile() {
   return (
     <>
       <div>
-        <User image={user.photoURL} email={user.email} name={user.displayName} lastLogin={user.metadata.lastSignInTime} />
+        <User image={user.photoURL} email={user.email} name={user.displayName} lastLogin={user.metadata.lastSignInTime} uid={user.uid} />
       </div>
     </>
   );
