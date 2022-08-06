@@ -106,6 +106,6 @@ body {
 .post-container {
   background-color: white;
   overflow-x: hidden;
-  overflow-y: scroll;
+  overflow-y: auto;
   height: 100vh;
 }
