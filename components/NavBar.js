@@ -30,19 +30,21 @@ export default function NavBar() {
                 </a>
               </Link>
             </li>
-            <div>
-              {/* <Search /> */}
-            </div>
-            <button type="button" className="btn btn-danger" onClick={signOut}>
-              Sign Out
-            </button>
-            <div className="dropdown">
-              <a>
+            <li className="nav-item dropdown">
+              <a className="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">
                 <img src={user.photoURL} alt="user" className="user-icon" />
               </a>
-              <div className="dropdown-menu" aria-labelledby="dropdownMenu2">
-                <ProfileDropdown />
-              </div>
+              <ul className="dropdown-menu">
+                <div>
+                  <ProfileDropdown />
+                  <button type="button" className="btn btn-danger" onClick={signOut}>
+                    Sign Out
+                  </button>
+                </div>
+              </ul>
+            </li>
+            <div>
+              {/* <Search /> */}
             </div>
           </ul>
         </div>

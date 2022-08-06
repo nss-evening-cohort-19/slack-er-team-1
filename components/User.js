@@ -3,15 +3,14 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 function User({
-  image, name, email, lastLogin, uid,
+  image, name, email, lastLogin,
 }) {
   return (
     <div>
       <img src={image} alt={name} />
       <h1>{name}</h1>
       <h2>{email}</h2>
-      <h3>{lastLogin}</h3>
-      <h1>{uid}</h1>,
+      <h3>{lastLogin}</h3>,
     </div>
   );
 }
@@ -21,14 +20,12 @@ User.propTypes = {
   name: PropTypes.string,
   email: PropTypes.string,
   lastLogin: PropTypes.string,
-  uid: PropTypes.string,
 };
 User.defaultProps = {
   image: '',
   name: '',
   email: '',
   lastLogin: '',
-  uid: '',
 };
 
 export default User;
