@@ -63,7 +63,7 @@ CreateUserForm.propTypes = {
     name: PropTypes.string,
     tagline: PropTypes.string,
     email: PropTypes.string,
-    phone: PropTypes.number,
+    phone: PropTypes.string,
     imageUrl: PropTypes.string,
     firebaseKey: PropTypes.string,
   }),
