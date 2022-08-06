@@ -19,8 +19,6 @@ export default function Posts() {
     getThePosts();
   }, []);
 
-  console.warn(posts);
-
   return (
     <>
       <div className="text-center my-4 teamCardsDiv">

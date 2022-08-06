@@ -17,7 +17,7 @@ function CreateUserForm({ obj }) {
   const [, setProfile] = useState([]);
   const router = useRouter();
   const { user } = useAuth();
-  console.warn(user.uid);
+
   useEffect(() => {
     getUsers(user.uid).then(setProfile);
     if (obj.firebaseKey) setFormInput(obj);
@@ -36,7 +36,12 @@ function CreateUserForm({ obj }) {
     if (obj.firebaseKey) {
       updateUser(formInput).then(() => router.push('/'));
     } else {
-      const payload = { ...formInput, uid: user.uid };
+      const payload = {
+        ...formInput,
+        uid: user.uid,
+        lastLogin: new Date().toLocaleString(),
+        timeZone: Intl.DateTimeFormat().resolvedOptions().timeZone,
+      };
       createUser(payload).then(() => {
         router.push('/');
       });
@@ -45,11 +50,11 @@ function CreateUserForm({ obj }) {
   return (
     <>
       <form onSubmit={handleSubmit}>
-        <input type="text" name="name" value={formInput.name} className="form-control" placeholder="First and Last Name" onChange={handleChange} />
-        <input type="text" name="tagline" value={formInput.tagline} className="form-control" placeholder="What's your tagline?" onChange={handleChange} />
-        <input type="email" name="email" value={formInput.email} className="form-control" placeholder="E-mail Address" onChange={handleChange} />
-        <input type="tel" name="phone" value={formInput.phone} className="form-control" placeholder="Phone Number" onChange={handleChange} />
-        <input type="URL" name="imageUrl" value={formInput.imageUrl} className="form-control" placeholder="Profile Image URL" onChange={handleChange} />
+        <input required type="text" name="name" value={formInput.name} className="form-control" placeholder="First and Last Name" onChange={handleChange} />
+        <input required type="text" name="tagline" value={formInput.tagline} className="form-control" placeholder="What's your tagline?" onChange={handleChange} />
+        <input required type="email" name="email" value={formInput.email} className="form-control" placeholder="E-mail Address" onChange={handleChange} />
+        <input required type="tel" name="phone" value={formInput.phone} className="form-control" placeholder="Phone Number" onChange={handleChange} />
+        <input required type="URL" name="imageUrl" value={formInput.imageUrl} className="form-control" placeholder="Profile Image URL" onChange={handleChange} />
         <button type="submit" className="btn btn-primary">
           Submit
         </button>
@@ -66,6 +71,8 @@ CreateUserForm.propTypes = {
     phone: PropTypes.string,
     imageUrl: PropTypes.string,
     firebaseKey: PropTypes.string,
+    lastLogin: PropTypes.string,
+    timeZone: PropTypes.string,
   }),
 };
 
