@@ -17,7 +17,6 @@ function CreateUserForm({ obj }) {
   const [, setProfile] = useState([]);
   const router = useRouter();
   const { user } = useAuth();
-  console.warn(user);
 
   useEffect(() => {
     getUsers(user.uid).then(setProfile);

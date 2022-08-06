@@ -1,17 +1,20 @@
 import { React } from 'react';
+import Image from 'next/image';
 import PropTypes from 'prop-types';
+import { useAuth } from '../utils/context/authContext';
 
 export default function PostCard({ postObj }) {
+  const { user } = useAuth();
   return (
     <div>
       <div className="panel panel-default postCard">
         <div className="gutter">
           <div className="userProfileHover">
-            <button type="button" className="photoBtn">{postObj.posterPhoto}</button>
+            <Image width="30px" height="30px" src={user.photoURL} alt="user" className="user-icon" />
           </div>
         </div>
         <div className="panel-heading">{postObj.posterName} {postObj.timeStamp}</div>
-        <div className="panel-body">{postObj.content}</div>
+        <div className="panel-body">{postObj.postContent}</div>
         <div className="panel-body">{postObj.reactions}</div>
         <div className="panel-body">Replies</div>
         <button type="button" className="editMessage">Edit Message</button>
@@ -24,10 +27,9 @@ export default function PostCard({ postObj }) {
 PostCard.propTypes = {
   postObj: PropTypes.shape(
     {
-      posterPhoto: PropTypes.string,
       posterName: PropTypes.string,
       timeStamp: PropTypes.string,
-      content: PropTypes.string,
+      postContent: PropTypes.string,
       reactions: PropTypes.string,
     },
   ),
@@ -36,7 +38,6 @@ PostCard.propTypes = {
 PostCard.defaultProps = {
   postObj: PropTypes.shape(
     {
-      posterPhoto: '',
       posterName: '',
       timeStamp: '',
       content: '',
