@@ -21,9 +21,9 @@ const getSingleChannel = (firebaseKey) => new Promise((resolve, reject) => {
   axios.get(`${dbUrl}/channels/${firebaseKey}.json`)
     .then((response) => {
       if (response.data) {
-        resolve(Object.values(response.data));
+        resolve(response.data);
       } else {
-        resolve([]);
+        resolve({});
       }
     })
     .catch(reject);
