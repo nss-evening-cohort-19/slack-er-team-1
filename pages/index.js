@@ -1,5 +1,7 @@
-import Channel from '../components/Channel';
+import CreateUserForm from '../components/CreateUserForm';
+import PostCard from '../components/PostCard';
 import Sidebar from '../components/Sidebar';
+import Channel from '../components/Channel';
 
 function Home() {
   return (
@@ -7,6 +9,9 @@ function Home() {
       <br />
       <Channel />
       <Sidebar />
+      <PostCard />
+      <CreateUserForm />
+
     </div>
   );
 }

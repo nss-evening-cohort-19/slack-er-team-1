@@ -30,5 +30,17 @@ PostCard.propTypes = {
       content: PropTypes.string,
       reactions: PropTypes.string,
     },
-  ).isRequired,
+  ),
+};
+
+PostCard.defaultProps = {
+  postObj: PropTypes.shape(
+    {
+      posterPhoto: '',
+      posterName: '',
+      timeStamp: '',
+      content: '',
+      reactions: '',
+    },
+  ),
 };
