@@ -152,8 +152,19 @@ body {
     border-color: #565856 !important;
 }
 
+
+.commentInputContainer:focus {
+  border: none !important;
+}
+
 .commentInputContainer > .form-control {
   border: none !important;
+  background-color: #232529 !important;
+}
+
+.commentInputContainer::selection > .form-control {
+  border: none !important;
+  background-color: #232529 !important;
 }
 
 .submitPostBtn {
@@ -166,6 +177,17 @@ body {
 .postContentDiv {
   background-color: #232529;
   height: 100px;
+  border: none !important;
+}
+
+.postContentDiv:focus > .form-control {
+  border: none !important;
+}
+
+.postContentDiv::selection > .form-control{
+  background-color: #232529 !important;
+  height: 100px;
+  border: none !important;
 }
 
 .postSubmitToolbar {
