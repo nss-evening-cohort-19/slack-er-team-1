@@ -6,7 +6,7 @@ import Sidebar from '../components/Sidebar';
 import TextInput from '../components/TextInput';
 import { getAllPosts } from '../api/postsData';
 
-function Home() {
+export default function Home() {
   const [posts, setPosts] = useState([]);
   const [filteredPosts, setFilteredPosts] = useState([]);
 
@@ -16,7 +16,6 @@ function Home() {
       setFilteredPosts(postArray);
     });
   };
-
   useEffect(() => {
     getThePosts();
   }, []);
@@ -38,4 +37,3 @@ function Home() {
     </div>
   );
 }
-export default Home;
