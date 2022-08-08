@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
-import { useRouter } from 'next/router';
 import { useAuth } from '../utils/context/authContext';
 import { createPost, getPosts, updatePost } from '../api/postsData';
 import { getSingleChannel } from '../api/channelData';
@@ -9,11 +8,10 @@ const initialState = {
   postContent: '',
 };
 
-function TextInput({ postObj, channelObj }) {
-  const [formInput, setFormInput] = useState(initialState);
+function TextInput({ postObj, channelObj, messageToEdit }) {
+  const [formInput, setFormInput] = useState({ postContent: messageToEdit.messageContent });
   const [posts, setPosts] = useState(initialState);
   const [, setProfile] = useState([]);
-  const router = useRouter();
   const { user } = useAuth();
 
   const getAllThePosts = () => {
@@ -40,8 +38,8 @@ function TextInput({ postObj, channelObj }) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (postObj.firebaseKey) {
-      updatePost(formInput).then(() => router.push('/'));
+    if (messageToEdit.firebaseKey) {
+      updatePost(formInput).then(() => getAllThePosts());
     } else {
       const payload = {
         ...formInput,
@@ -52,7 +50,7 @@ function TextInput({ postObj, channelObj }) {
         channelId: channelObj.firebaseKey,
       };
       createPost(payload).then(() => {
-        router.push('/');
+        getAllThePosts();
       });
     }
   };
@@ -86,11 +84,16 @@ TextInput.propTypes = {
   channelObj: PropTypes.shape({
     firebaseKey: PropTypes.string,
   }),
+  messageToEdit: PropTypes.shape({
+    firebaseKey: PropTypes.string,
+    messageContent: PropTypes.string,
+  }),
 };
 
 TextInput.defaultProps = {
   postObj: initialState,
   channelObj: initialState,
+  messageToEdit: initialState,
 };
 
 export default TextInput;

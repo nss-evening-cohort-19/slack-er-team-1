@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import { useAuth } from '../utils/context/authContext';
 import { deleteSinglePost } from '../api/postsData';
 
-export default function PostCard({ postObj, onUpdate }) {
+export default function PostCard({ postObj, onUpdate, setMessageToEdit }) {
   const { user } = useAuth();
 
   const handleDelete = () => {
@@ -26,7 +26,7 @@ export default function PostCard({ postObj, onUpdate }) {
         <div className="panel-body">{postObj.postContent}</div>
         <div className="panel-body">{postObj.reactions}</div>
         <div className="panel-body">Replies</div>
-        <button type="button" className="editMessage">Edit Message</button>
+        <button type="button" onClick={() => setMessageToEdit(postObj)} className="editMessage">Edit Message</button>
         <button type="button" onClick={handleDelete} className="deleteMessage">Delete Message</button>
       </div>
     </div>
@@ -44,6 +44,7 @@ PostCard.propTypes = {
     },
   ),
   onUpdate: PropTypes.func.isRequired,
+  setMessageToEdit: PropTypes.func.isRequired,
 };
 
 PostCard.defaultProps = {

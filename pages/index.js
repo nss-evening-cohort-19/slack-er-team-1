@@ -10,6 +10,7 @@ import TextInput from '../components/TextInput';
 function Home() {
   const [posts, setPosts] = useState([]);
   const [filteredPosts, setFilteredPosts] = useState([]);
+  const [messageToEdit, setMessageToEdit] = useState();
 
   const getThePosts = () => {
     getAllPosts().then((postArray) => {
@@ -21,6 +22,7 @@ function Home() {
   useEffect(() => {
     getThePosts();
   }, []);
+
   return (
     <div>
       <br />
@@ -31,12 +33,12 @@ function Home() {
         <div className="text-center my-4 teamCardsDiv">
           <div className="d-flex flex-wrap postsCardContainer">
             {filteredPosts?.map((post) => (
-              <PostCard key={post?.firebaseKey} postObj={post} posts={posts} onUpdate={getThePosts} />
+              <PostCard key={post?.firebaseKey} setMessageToEdit={setMessageToEdit} postObj={post} posts={posts} onUpdate={getThePosts} />
             ))}
           </div>
         </div>
       </div>
-      <TextInput />
+      <TextInput messageToEdit={messageToEdit} />
     </div>
   );
 }
