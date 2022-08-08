@@ -1,13 +1,14 @@
-/* eslint-disable @next/next/no-img-element */
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import React from 'react';
+// import Image from 'next/image';
 import Link from 'next/link';
 // import Search from './Search';
 import { signOut } from '../utils/auth';
-import { useAuth } from '../utils/context/authContext';
+// import { useAuth } from '../utils/context/authContext';
+import ProfileDropdown from './ProfileDropdown';
 
 export default function NavBar() {
-  const { user } = useAuth();
+  // const { user } = useAuth();
   return (
     <nav className="navbar navbar-expand-md navbar-dark bg-dark">
       <div className="container-fluid">
@@ -29,17 +30,22 @@ export default function NavBar() {
                 </a>
               </Link>
             </li>
+            <li className="nav-item dropdown">
+              <a className="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">
+                {/* <Image src={user.photoURL} width="30px" height="30px" alt="user" className="user-icon" /> */}
+              </a>
+              <ul className="dropdown-menu">
+                <div>
+                  <ProfileDropdown />
+                  <button type="button" className="btn btn-danger" onClick={signOut}>
+                    Sign Out
+                  </button>
+                </div>
+              </ul>
+            </li>
             <div>
               {/* <Search /> */}
             </div>
-            <button type="button" className="btn btn-danger" onClick={signOut}>
-              Sign Out
-            </button>
-            <Link passHref href="/profile">
-              <a>
-                <img src={user.photoURL} alt="user" className="user-icon" />
-              </a>
-            </Link>
           </ul>
         </div>
       </div>
