@@ -57,14 +57,17 @@ function TextInput({ postObj, channelObj }) {
     }
   };
   return (
-    <>
+    <div className="mainPostContainer">
       <form className="commentInputContainer" onSubmit={handleSubmit}>
-        <input required type="text" name="postContent" value={formInput.postContent} obj={posts} className="form-control" placeholder="Message Channel" onChange={handleChange} />
-        <button type="submit" className="btn btn-primary">
-          Submit
-        </button>
+        <input required type="text" name="postContent" value={formInput.postContent} obj={posts} className="form-control postContentDiv" placeholder="Message Channel" onChange={handleChange} />
+        <div className="postSubmitToolbar">
+          <div className="leftToolbar" />
+          <button type="submit" className="submitPostBtn">
+            Send
+          </button>
+        </div>
       </form>
-    </>
+    </div>
   );
 }
 

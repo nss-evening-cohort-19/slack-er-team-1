@@ -1,8 +1,16 @@
 import { React } from 'react';
 import Image from 'next/image';
 import PropTypes from 'prop-types';
+import { deleteSinglePost } from '../api/postsData';
 
-export default function PostCard({ postObj }) {
+export default function PostCard({ postObj, onUpdate }) {
+  const handleDelete = () => {
+    if (window.confirm('Delete post?')) {
+      console.warn(postObj);
+      deleteSinglePost(postObj.firebaseKey).then(() => onUpdate());
+    }
+  };
+
   return (
     <div>
       <div className="panel panel-default postCard">
@@ -16,7 +24,7 @@ export default function PostCard({ postObj }) {
         <div className="panel-body">{postObj.reactions}</div>
         <div className="panel-body">Replies</div>
         <button type="button" className="editMessage">Edit Message</button>
-        <button type="button" className="deleteMessage">Delete Message</button>
+        <button type="button" onClick={handleDelete} className="deleteMessage">Delete Message</button>
       </div>
     </div>
   );
@@ -30,8 +38,10 @@ PostCard.propTypes = {
       postContent: PropTypes.string,
       reactions: PropTypes.string,
       posterPhoto: PropTypes.string,
+      firebaseKey: PropTypes.string,
     },
   ),
+  onUpdate: PropTypes.func.isRequired,
 };
 
 PostCard.defaultProps = {
