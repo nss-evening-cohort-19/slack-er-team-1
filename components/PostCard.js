@@ -23,9 +23,9 @@ export default function PostCard({ postObj }) {
     <div>
       <div className="panel panel-default postCard">
         <div className="gutter">
-          {/* <div className="userProfileHover">
-            <Image width="30px" height="30px" src={user.photoURL} alt="user" className="user-icon" />
-          </div> */}
+          <div className="userProfileHover">
+            {/* <Image width="30px" height="30px" src={user.photoURL} alt="user" className="user-icon" /> */}
+          </div>
         </div>
         <div className="panel-heading">{postObj.posterName} {postObj.timeStamp}</div>
         <div className="panel-body">{postObj.postContent}</div>
