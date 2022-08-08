@@ -1,12 +1,9 @@
 import { React } from 'react';
 import Image from 'next/image';
 import PropTypes from 'prop-types';
-import { useAuth } from '../utils/context/authContext';
 import { deleteSinglePost } from '../api/postsData';
 
 export default function PostCard({ postObj, onUpdate }) {
-  const { user } = useAuth();
-
   const handleDelete = () => {
     if (window.confirm('Delete post?')) {
       console.warn(postObj);
@@ -19,7 +16,7 @@ export default function PostCard({ postObj, onUpdate }) {
       <div className="panel panel-default postCard">
         <div className="gutter">
           <div className="userProfileHover">
-            <Image width="30px" height="30px" src={user.photoURL} alt="user" className="user-icon" />
+            <Image width="30px" height="30px" src={postObj.posterPhoto} alt="user" className="user-icon" />
           </div>
         </div>
         <div className="panel-heading">{postObj.posterName} {postObj.timeStamp}</div>
@@ -40,6 +37,7 @@ PostCard.propTypes = {
       timeStamp: PropTypes.string,
       postContent: PropTypes.string,
       reactions: PropTypes.string,
+      posterPhoto: PropTypes.string,
       firebaseKey: PropTypes.string,
     },
   ),
