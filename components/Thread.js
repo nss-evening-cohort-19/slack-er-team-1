@@ -1,17 +1,31 @@
-import React, { useState } from 'react';
+/* eslint-disable @next/next/no-img-element */
+import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import Button from 'react-bootstrap/Button';
 import Offcanvas from 'react-bootstrap/Offcanvas';
+import MessageCard from './MessageCard';
+import MessageInput from './MessageInput';
+import { getMessagesByPost } from '../api/messagesData';
+import { useAuth } from '../utils/context/authContext';
 
-export default function Thread({ postObj }) {
+export default function Thread({ postObj, messageNum, onUpdate }) {
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
   const toggleShow = () => setShow((s) => !s);
-
+  const [messages, setMessages] = useState([]);
+  const { user } = useAuth();
+  const showMessages = () => {
+    getMessagesByPost(postObj.firebaseKey).then(setMessages);
+    onUpdate();
+  };
+  useEffect(() => {
+    showMessages();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
   return (
     <>
-      <Button variant="primary" onClick={toggleShow} className="me-2">
-        Hello
+      <Button onClick={toggleShow}>
+        {messageNum}
       </Button>
       <Offcanvas show={show} placement="end" onHide={handleClose} scroll="true">
         <Offcanvas.Header closeButton>
@@ -21,11 +35,9 @@ export default function Thread({ postObj }) {
           <div className="message-container">
             <div className="post-start">
               <span className="profile-hover-card">
-                <button type="button" className="avatar-icon-card">
-                  <span className="avatar-img-container">
-                    <span>User Photo</span>
-                  </span>
-                </button>
+                <span className="avatar-img-container">
+                  <img width="30px" height="30px" src={user.photoURL} alt="user" className="user-icon" />
+                </span>
               </span>
             </div>
             <div className="post-end">
@@ -35,6 +47,16 @@ export default function Thread({ postObj }) {
                 <p className="post-content">{postObj.postContent}</p>
               </div>
             </div>
+            <div className="replies-count">
+              <span>{messageNum} replies</span>
+              <hr className="divider-line" />
+            </div>
+          </div>
+          <div className="comment-card-container">
+            {messages.map((message) => (
+              <MessageCard key={message.firebaseKey} messageObj={message} onUpdate={showMessages} />
+            ))}
+            <MessageInput onUpdate={showMessages} />
           </div>
         </Offcanvas.Body>
       </Offcanvas>
@@ -52,14 +74,8 @@ Thread.propTypes = {
       reactions: PropTypes.string,
     },
   ),
-  // messages: PropTypes.arrayOf(PropTypes.shape(
-  //   {
-  //     firebaseKey: '',
-  //     messageContent: '',
-  //     postId: '',
-  //     timeStamp: '',
-  //   },
-  // )),
+  messageNum: PropTypes.number,
+  onUpdate: PropTypes.func.isRequired,
 };
 
 Thread.defaultProps = {
@@ -72,12 +88,5 @@ Thread.defaultProps = {
       reactions: '',
     },
   ),
-  // messages: PropTypes.arrayOf(PropTypes.shape(
-  //   {
-  //     firebaseKey: '',
-  //     messageContent: '',
-  //     postId: '',
-  //     timeStamp: '',
-  //   },
-  // )),
+  messageNum: PropTypes.number,
 };
