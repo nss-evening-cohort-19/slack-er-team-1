@@ -9,7 +9,7 @@ const initialState = {
 };
 
 function TextInput({ postObj, channelObj, messageToEdit }) {
-  const [formInput, setFormInput] = useState({ postContent: messageToEdit.messageContent });
+  const [formInput, setFormInput] = useState({ postContent: messageToEdit.postContent || '' });
   const [posts, setPosts] = useState(initialState);
   const [, setProfile] = useState([]);
   const { user } = useAuth();
@@ -21,9 +21,13 @@ function TextInput({ postObj, channelObj, messageToEdit }) {
   };
 
   useEffect(() => {
+    setFormInput({ postContent: messageToEdit.postContent });
+  }, [messageToEdit]);
+
+  useEffect(() => {
     getAllThePosts();
     getPosts(user.uid).then(setProfile);
-    if (postObj.firebaseKey) setFormInput(postObj);
+    // if (postObj.firebaseKey) setFormInput(postObj);
 
     getSingleChannel().then(channelObj);
   }, [postObj, user, channelObj]);
@@ -54,6 +58,7 @@ function TextInput({ postObj, channelObj, messageToEdit }) {
       });
     }
   };
+
   return (
     <div className="mainPostContainer">
       <form className="commentInputContainer" onSubmit={handleSubmit}>
@@ -86,7 +91,7 @@ TextInput.propTypes = {
   }),
   messageToEdit: PropTypes.shape({
     firebaseKey: PropTypes.string,
-    messageContent: PropTypes.string,
+    postContent: PropTypes.string,
   }),
 };
 
