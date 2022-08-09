@@ -1,5 +1,6 @@
 import React from 'react';
 import ChannelNameCard from '../../components/channels/ChannelNameCard';
+import Sidebar from '../../components/Sidebar';
 
 export default function browseChannels() {
   return (
@@ -7,6 +8,9 @@ export default function browseChannels() {
       <header>
         <h1>Browse Channels</h1>
       </header>
+      <section>
+        <Sidebar />
+      </section>
       <section>
         <ChannelNameCard />
       </section>
