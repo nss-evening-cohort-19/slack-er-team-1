@@ -1,14 +1,14 @@
 import React, { useEffect, useState } from 'react';
 import Link from 'next/link';
 import { useAuth } from '../utils/context/authContext';
-import { getChannels } from '../api/channelData';
+import { getChannelsByUid } from '../api/channelData';
 
 export default function Sidebar() {
   const [channelList, setChannelList] = useState([]);
   const { user } = useAuth();
 
   useEffect(() => {
-    getChannels(user.uid).then(setChannelList);
+    getChannelsByUid(user.uid).then(setChannelList);
   }, [user.uid]);
 
   return (
