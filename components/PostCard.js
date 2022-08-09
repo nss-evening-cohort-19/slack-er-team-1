@@ -2,11 +2,16 @@
 import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import getMessagesOnPost from '../api/mergedData';
-import { useAuth } from '../utils/context/authContext';
 import Thread from './Thread';
+import { deleteSinglePost } from '../api/postsData';
 
-export default function PostCard({ postObj }) {
-  const { user } = useAuth();
+export default function PostCard({ postObj, onUpdate }) {
+  const handleDelete = () => {
+    if (window.confirm('Delete post?')) {
+      console.warn(postObj);
+      deleteSinglePost(postObj.firebaseKey).then(() => onUpdate());
+    }
+  };
   const [messageNum, setMessageNum] = useState(0);
   const showMessageDetails = () => {
     getMessagesOnPost(postObj.firebaseKey).then((postsMessages) => {
@@ -17,12 +22,13 @@ export default function PostCard({ postObj }) {
     showMessageDetails();
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+
   return (
     <div>
       <div className="panel panel-default postCard">
         <div className="gutter">
           <div className="userProfileHover">
-            <img width="30px" height="30px" src={user.photoURL} alt="user" className="user-icon" />
+            <img width="30px" height="30px" src={postObj.posterPhoto} alt="user" className="user-icon" />
           </div>
         </div>
         <div className="panel-heading">{postObj.posterName} {postObj.timeStamp}</div>
@@ -33,7 +39,7 @@ export default function PostCard({ postObj }) {
           Replies
         </div>
         <button type="button" className="editMessage">Edit Message</button>
-        <button type="button" className="deleteMessage">Delete Message</button>
+        <button type="button" onClick={handleDelete} className="deleteMessage">Delete Message</button>
       </div>
     </div>
   );
@@ -50,6 +56,7 @@ PostCard.propTypes = {
       reactions: PropTypes.string,
     },
   ),
+  onUpdate: PropTypes.func.isRequired,
 };
 
 PostCard.defaultProps = {
