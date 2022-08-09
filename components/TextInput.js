@@ -54,6 +54,8 @@ function TextInput({ postObj, channelObj, messageToEdit }) {
       };
       createPost(payload).then(() => {
         getAllThePosts();
+        
+        setFormInput(initialState);
       });
     }
   };
@@ -61,7 +63,7 @@ function TextInput({ postObj, channelObj, messageToEdit }) {
   return (
     <div className="mainPostContainer">
       <form className="commentInputContainer" onSubmit={handleSubmit}>
-        <input required type="text" name="postContent" value={formInput.postContent} obj={posts} className="form-control postContentDiv" placeholder="Message Channel" onChange={handleChange} />
+        <input required type="text" name="postContent" value={formInput?.postContent} obj={posts} className="form-control postContentDiv" placeholder="Message Channel" onChange={handleChange} />
         <div className="postSubmitToolbar">
           <div className="leftToolbar" />
           <button type="submit" className="submitPostBtn">
