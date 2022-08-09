@@ -27,7 +27,6 @@ function TextInput({ postObj, channelObj, messageToEdit }) {
   useEffect(() => {
     getAllThePosts();
     getPosts(user.uid).then(setProfile);
-    // if (postObj.firebaseKey) setFormInput(postObj);
 
     getSingleChannel().then(channelObj);
   }, [postObj, user, channelObj]);
@@ -42,7 +41,7 @@ function TextInput({ postObj, channelObj, messageToEdit }) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (messageToEdit.firebaseKey) {
+    if (messageToEdit) {
       updatePost(formInput).then(() => getAllThePosts());
     } else {
       const payload = {
