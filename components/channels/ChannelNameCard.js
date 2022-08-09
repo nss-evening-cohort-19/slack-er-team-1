@@ -22,7 +22,14 @@ ChannelNameCard.propTypes = {
   channelObj: PropTypes.shape({
     channelName: PropTypes.string,
     firebaseKey: PropTypes.string,
-  }).isRequired,
+  }),
+};
+
+ChannelNameCard.defaultProps = {
+  channelObj: PropTypes.shape({
+    channelName: '',
+    firebaseKey: '',
+  }),
 };
 
 export default ChannelNameCard;
