@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import PropTypes from 'prop-types';
+
 import { getChannels } from '../../api/channelData';
 
 function ChannelNameCard() {
@@ -17,19 +17,5 @@ function ChannelNameCard() {
     </div>
   );
 }
-
-ChannelNameCard.propTypes = {
-  channelObj: PropTypes.shape({
-    channelName: PropTypes.string,
-    firebaseKey: PropTypes.string,
-  }),
-};
-
-ChannelNameCard.defaultProps = {
-  channelObj: PropTypes.shape({
-    channelName: '',
-    firebaseKey: '',
-  }),
-};
 
 export default ChannelNameCard;
