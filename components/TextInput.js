@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import { useRouter } from 'next/router';
 import { useAuth } from '../utils/context/authContext';
-import { createPost, getPosts, updatePost } from '../api/postsData';
+import { createPost, getAllPosts, updatePost } from '../api/postsData';
 import { getSingleChannel } from '../api/channelData';
 
 const initialState = {
@@ -12,19 +12,17 @@ const initialState = {
 function TextInput({ postObj, channelObj }) {
   const [formInput, setFormInput] = useState(initialState);
   const [posts, setPosts] = useState(initialState);
-  const [, setProfile] = useState([]);
   const router = useRouter();
   const { user } = useAuth();
 
   const getAllThePosts = () => {
-    getPosts().then((post) => {
+    getAllPosts().then((post) => {
       setPosts(post);
     });
   };
 
   useEffect(() => {
     getAllThePosts();
-    getPosts(user.uid).then(setProfile);
     if (postObj.firebaseKey) setFormInput(postObj);
 
     getSingleChannel().then(channelObj);
@@ -52,7 +50,8 @@ function TextInput({ postObj, channelObj }) {
         channelId: channelObj.firebaseKey,
       };
       createPost(payload).then(() => {
-        router.push('/');
+        getAllThePosts();
+        setFormInput(initialState);
       });
     }
   };

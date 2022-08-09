@@ -8,7 +8,6 @@ import { deleteSinglePost } from '../api/postsData';
 export default function PostCard({ postObj, onUpdate }) {
   const handleDelete = () => {
     if (window.confirm('Delete post?')) {
-      console.warn(postObj);
       deleteSinglePost(postObj.firebaseKey).then(() => onUpdate());
     }
   };

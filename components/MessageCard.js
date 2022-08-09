@@ -12,7 +12,6 @@ export default function MessageCard({ messageObj, onUpdate }) {
   };
   const editMessage = () => {
     getSingleMessage(messageObj.firebaseKey).then(() => onUpdate());
-    console.warn(messageObj.firebaseKey);
   };
   return (
     <div>

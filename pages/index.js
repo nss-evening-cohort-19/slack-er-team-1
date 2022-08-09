@@ -35,7 +35,7 @@ export default function Home() {
           </div>
         </div>
       </div>
-      <TextInput />
+      <TextInput onUpdate={getThePosts} />
     </div>
   );
 }
