@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
-import { useRouter } from 'next/router';
 import { useAuth } from '../utils/context/authContext';
-import { createPost, getAllPosts, updatePost } from '../api/postsData';
+import { createPost, getPosts, updatePost } from '../api/postsData';
 import { getSingleChannel } from '../api/channelData';
 
 const initialState = {
@@ -12,17 +11,18 @@ const initialState = {
 function TextInput({ postObj, channelObj }) {
   const [formInput, setFormInput] = useState(initialState);
   const [posts, setPosts] = useState(initialState);
-  const router = useRouter();
+  const [, setProfile] = useState([]);
   const { user } = useAuth();
 
   const getAllThePosts = () => {
-    getAllPosts().then((post) => {
+    getPosts().then((post) => {
       setPosts(post);
     });
   };
 
   useEffect(() => {
     getAllThePosts();
+    getPosts(user.uid).then(setProfile);
     if (postObj.firebaseKey) setFormInput(postObj);
 
     getSingleChannel().then(channelObj);
@@ -39,7 +39,8 @@ function TextInput({ postObj, channelObj }) {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (postObj.firebaseKey) {
-      updatePost(formInput).then(() => router.push('/'));
+      updatePost(formInput).then(() => getAllThePosts());
+      setFormInput(initialState);
     } else {
       const payload = {
         ...formInput,
@@ -58,7 +59,7 @@ function TextInput({ postObj, channelObj }) {
   return (
     <div className="mainPostContainer">
       <form className="commentInputContainer" onSubmit={handleSubmit}>
-        <input required type="text" name="postContent" value={formInput.postContent} obj={posts} className="form-control postContentDiv" placeholder="Message Channel" onChange={handleChange} />
+        <input required type="text" name="postContent" value={formInput?.postContent} obj={posts} className="form-control postContentDiv" placeholder="Message Channel" onChange={handleChange} />
         <div className="postSubmitToolbar">
           <div className="leftToolbar" />
           <button type="submit" className="submitPostBtn">
