@@ -1,14 +1,14 @@
 import React, { useEffect, useState } from 'react';
 import Link from 'next/link';
 import { useAuth } from '../utils/context/authContext';
-import { getChannels } from '../api/channelData';
+import { getChannelsByUid } from '../api/channelData';
 
 export default function Sidebar() {
   const [channelList, setChannelList] = useState([]);
   const { user } = useAuth();
 
   useEffect(() => {
-    getChannels(user.uid).then(setChannelList);
+    getChannelsByUid(user.uid).then(setChannelList);
   }, [user.uid]);
 
   return (
@@ -30,6 +30,7 @@ export default function Sidebar() {
           <ul className="dropdown-menu">
             {channelList.map((channel) => <li key={channel.firebaseKey}><Link className="dropdown-item" href={`/channel/${channel.firebaseKey}`}>{channel.channelName}</Link></li>)}
             <li><Link className="dropdown-item" href="/channel/new">+ Add channel</Link></li>
+            <li><Link className="dropdown-item" href="/channel/browseChannels">Browse Channels</Link></li>
           </ul>
         </div>
         <br />
