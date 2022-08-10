@@ -42,7 +42,11 @@ function TextInput({ postObj, channelObj, messageToEdit }) {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (messageToEdit) {
-      updatePost(formInput, postObj).then(() => getAllThePosts());
+      const payload = {
+        ...messageToEdit,
+        ...formInput,
+      };
+      updatePost(payload.firebaseKey, payload).then(() => getAllThePosts());
       setFormInput(initialState);
     } else {
       const payload = {
