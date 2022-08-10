@@ -8,7 +8,9 @@ const initialState = {
   postContent: '',
 };
 
-function TextInput({ postObj, channelObj, messageToEdit }) {
+function TextInput({
+  postObj, channelObj, messageToEdit, onUpdate,
+}) {
   const [formInput, setFormInput] = useState({ postContent: messageToEdit.postContent || '' });
   const [posts, setPosts] = useState(initialState);
   const [, setProfile] = useState([]);
@@ -28,8 +30,11 @@ function TextInput({ postObj, channelObj, messageToEdit }) {
     getAllThePosts();
     getPosts(user.uid).then(setProfile);
 
+    onUpdate();
+    if (postObj.firebaseKey) setFormInput(postObj);
     getSingleChannel().then(channelObj);
-  }, [postObj, user, channelObj]);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -58,7 +63,7 @@ function TextInput({ postObj, channelObj, messageToEdit }) {
         channelId: channelObj.firebaseKey,
       };
       createPost(payload).then(() => {
-        getAllThePosts();
+        onUpdate();
         setFormInput(initialState);
       });
     }
@@ -98,6 +103,7 @@ TextInput.propTypes = {
     firebaseKey: PropTypes.string,
     postContent: PropTypes.string,
   }),
+  onUpdate: PropTypes.func.isRequired,
 };
 
 TextInput.defaultProps = {

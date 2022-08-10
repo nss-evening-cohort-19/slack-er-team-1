@@ -207,3 +207,7 @@ body {
   width: 90%;
   justify-self: flex-start;
 }
+
+.all-channels-page {
+  background-color: white;
+}

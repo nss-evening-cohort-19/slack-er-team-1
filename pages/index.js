@@ -1,13 +1,14 @@
-/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect, useState } from 'react';
 import CreateUserForm from '../components/CreateUserForm';
 import PostCard from '../components/PostCard';
 import Sidebar from '../components/Sidebar';
 import { getAllPosts } from '../api/postsData';
 import TextInput from '../components/TextInput';
+import { useAuth } from '../utils/context/authContext';
 // import Channel from '../components/Channel';
 
 function Home() {
+  const { user } = useAuth();
   const [posts, setPosts] = useState([]);
   const [filteredPosts, setFilteredPosts] = useState([]);
   const [messageToEdit, setMessageToEdit] = useState();
@@ -21,8 +22,7 @@ function Home() {
 
   useEffect(() => {
     getThePosts();
-  }, [posts]);
-
+  }, []);
   return (
     <div>
       <br />
@@ -38,7 +38,7 @@ function Home() {
           </div>
         </div>
       </div>
-      <TextInput messageToEdit={messageToEdit} />
+      <TextInput key={user.firebaseKey} postsArray={posts} onUpdate={getThePosts} messageToEdit={messageToEdit} />
     </div>
   );
 }
