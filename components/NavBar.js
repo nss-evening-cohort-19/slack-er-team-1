@@ -1,6 +1,6 @@
+/* eslint-disable @next/next/no-img-element */
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import React from 'react';
-import Image from 'next/image';
 import Link from 'next/link';
 // import Search from './Search';
 import { signOut } from '../utils/auth';
@@ -32,7 +32,7 @@ export default function NavBar() {
             </li>
             <li className="nav-item dropdown">
               <a className="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">
-                <Image src={user.photoURL} width="30px" height="30px" alt="user" className="user-icon" />
+                <img src={user.photoURL} width="30px" height="30px" alt="user" className="user-icon" />
               </a>
               <ul className="dropdown-menu">
                 <div>

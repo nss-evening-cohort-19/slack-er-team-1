@@ -27,7 +27,13 @@ Channel.propTypes = {
     channelName: PropTypes.string,
     firebaseKey: PropTypes.string,
     public: PropTypes.bool,
-  }).isRequired,
+  }),
 };
-
+Channel.defaultProps = {
+  channelObj: PropTypes.shape({
+    channelName: '',
+    firebaseKey: '',
+    public: '',
+  }),
+};
 export default Channel;
