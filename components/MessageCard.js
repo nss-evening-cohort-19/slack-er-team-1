@@ -18,10 +18,10 @@ export default function MessageCard({ messageObj, onUpdate }) {
       <div className="panel panel-default postCard">
         <div className="gutter">
           <div className="userProfileHover">
-            <img width="30px" height="30px" src={user.photoURL} alt="user" className="user-icon" />
+            <img width="30px" height="30px" src={messageObj.posterPhoto} alt="user" className="user-icon" />
           </div>
         </div>
-        <div className="panel-heading">{user.displayName} {messageObj.timeStamp}</div>
+        <div className="panel-heading">{messageObj.displayName} {messageObj.timeStamp}</div>
         <div className="panel-body">{messageObj.messageContent}</div>
         {
         user.uid === messageObj.uid
@@ -48,6 +48,8 @@ MessageCard.propTypes = {
       postId: PropTypes.string,
       timeStamp: PropTypes.string,
       uid: PropTypes.string,
+      posterPhoto: PropTypes.string,
+      displayName: PropTypes.string,
     },
   ),
   onUpdate: PropTypes.func.isRequired,
@@ -60,6 +62,8 @@ MessageCard.defaultProps = {
       postId: '',
       timeStamp: '',
       uid: '',
+      posterPhoto: '',
+      displayName: '',
     },
   ),
 };

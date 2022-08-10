@@ -5,7 +5,6 @@ import Button from 'react-bootstrap/Button';
 import Offcanvas from 'react-bootstrap/Offcanvas';
 import MessageCard from './MessageCard';
 import MessageInput from './MessageInput';
-import { useAuth } from '../utils/context/authContext';
 
 export default function Thread({
   postObj, messageNum, onUpdate, messages,
@@ -13,7 +12,6 @@ export default function Thread({
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
   const toggleShow = () => setShow((s) => !s);
-  const { user } = useAuth();
   const render = () => {
     onUpdate();
   };
@@ -35,7 +33,7 @@ export default function Thread({
             <div className="post-start">
               <span className="profile-hover-card">
                 <span className="avatar-img-container">
-                  <img width="30px" height="30px" src={user.photoURL} alt="user" className="user-icon" />
+                  <img width="30px" height="30px" src={postObj.posterPhoto} alt="user" className="user-icon" />
                 </span>
               </span>
             </div>

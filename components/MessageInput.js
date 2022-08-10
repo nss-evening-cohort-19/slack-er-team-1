@@ -32,6 +32,8 @@ export default function MessageInput({ postObj, onUpdate }) {
       uid: user.uid,
       postId: postObj.firebaseKey,
       timeStamp: new Date().toLocaleString(),
+      posterPhoto: user.photoURL,
+      posterName: user.displayName,
     };
     onUpdate();
     createMessages(payload).then(() => {

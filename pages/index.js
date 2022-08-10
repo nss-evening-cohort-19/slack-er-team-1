@@ -4,9 +4,11 @@ import PostCard from '../components/PostCard';
 import Sidebar from '../components/Sidebar';
 import { getAllPosts } from '../api/postsData';
 import TextInput from '../components/TextInput';
+import { useAuth } from '../utils/context/authContext';
 // import Channel from '../components/Channel';
 
 function Home() {
+  const { user } = useAuth();
   const [posts, setPosts] = useState([]);
   const [filteredPosts, setFilteredPosts] = useState([]);
 
@@ -35,7 +37,7 @@ function Home() {
           </div>
         </div>
       </div>
-      <TextInput postsArray={posts} onUpdate={getThePosts} />
+      <TextInput key={user.firebaseKey} postsArray={posts} onUpdate={getThePosts} />
     </div>
   );
 }
