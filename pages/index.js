@@ -19,7 +19,7 @@ function Home() {
 
   useEffect(() => {
     getThePosts();
-  }, [posts]);
+  }, []);
   return (
     <div>
       <br />
@@ -35,7 +35,7 @@ function Home() {
           </div>
         </div>
       </div>
-      <TextInput />
+      <TextInput postsArray={posts} onUpdate={getThePosts} />
     </div>
   );
 }

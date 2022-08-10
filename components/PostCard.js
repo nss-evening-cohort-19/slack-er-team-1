@@ -12,9 +12,11 @@ export default function PostCard({ postObj, onUpdate }) {
     }
   };
   const [messageNum, setMessageNum] = useState(0);
+  const [messages, setMessages] = useState([]);
   const showMessageDetails = () => {
     getMessagesOnPost(postObj.firebaseKey).then((postsMessages) => {
       setMessageNum(postsMessages.messages.length);
+      setMessages(postsMessages.messages);
     });
   };
   useEffect(() => {
@@ -34,7 +36,7 @@ export default function PostCard({ postObj, onUpdate }) {
         <div className="panel-body">{postObj.postContent}</div>
         <div className="panel-body">{postObj.reactions}</div>
         <div className="panel-body">
-          <Thread postObj={postObj} messageNum={messageNum} onUpdate={showMessageDetails} />
+          <Thread postObj={postObj} messageNum={messageNum} messages={messages} onUpdate={showMessageDetails} />
           Replies
         </div>
         <button type="button" className="editMessage">Edit Message</button>

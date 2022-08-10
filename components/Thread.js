@@ -5,21 +5,20 @@ import Button from 'react-bootstrap/Button';
 import Offcanvas from 'react-bootstrap/Offcanvas';
 import MessageCard from './MessageCard';
 import MessageInput from './MessageInput';
-import { getMessagesByPost } from '../api/messagesData';
 import { useAuth } from '../utils/context/authContext';
 
-export default function Thread({ postObj, messageNum, onUpdate }) {
+export default function Thread({
+  postObj, messageNum, onUpdate, messages,
+}) {
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
   const toggleShow = () => setShow((s) => !s);
-  const [messages, setMessages] = useState([]);
   const { user } = useAuth();
-  const showMessages = () => {
-    getMessagesByPost(postObj.firebaseKey).then(setMessages);
+  const render = () => {
     onUpdate();
   };
   useEffect(() => {
-    showMessages();
+    render();
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   return (
@@ -54,9 +53,9 @@ export default function Thread({ postObj, messageNum, onUpdate }) {
           </div>
           <div className="comment-card-container">
             {messages.map((message) => (
-              <MessageCard key={message.firebaseKey} messageObj={message} onUpdate={showMessages} />
+              <MessageCard key={message.firebaseKey} messageObj={message} messages={messages} onUpdate={render} />
             ))}
-            <MessageInput onUpdate={showMessages} />
+            <MessageInput postObj={postObj} onUpdate={render} />
           </div>
         </Offcanvas.Body>
       </Offcanvas>
@@ -76,6 +75,12 @@ Thread.propTypes = {
   ),
   messageNum: PropTypes.number,
   onUpdate: PropTypes.func.isRequired,
+  messages: PropTypes.arrayOf(PropTypes.shape({
+    firebase: PropTypes.string,
+    messageContent: PropTypes.string,
+    postId: PropTypes.string,
+    uid: PropTypes.string,
+  })),
 };
 
 Thread.defaultProps = {
@@ -89,4 +94,10 @@ Thread.defaultProps = {
     },
   ),
   messageNum: PropTypes.number,
+  messages: PropTypes.arrayOf(PropTypes.shape({
+    firebase: '',
+    messageContent: '',
+    postId: '',
+    uid: '',
+  })),
 };
