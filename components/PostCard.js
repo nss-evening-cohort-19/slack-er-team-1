@@ -22,7 +22,6 @@ export default function PostCard({ postObj, onUpdate, setMessageToEdit }) {
         <div className="panel-heading">{postObj.posterName} {postObj.timeStamp}</div>
         <div className="panel-body">{postObj.postContent}</div>
         <div className="panel-body">{postObj.reactions}</div>
-        <div className="panel-body">Replies</div>
         <button type="button" onClick={() => setMessageToEdit(postObj)} className="editMessage">Edit Message</button>
         <button type="button" onClick={handleDelete} className="deleteMessage">Delete Message</button>
       </div>
@@ -33,12 +32,12 @@ export default function PostCard({ postObj, onUpdate, setMessageToEdit }) {
 PostCard.propTypes = {
   postObj: PropTypes.shape(
     {
+      firebaseKey: PropTypes.string,
+      posterPhoto: PropTypes.string,
       posterName: PropTypes.string,
       timeStamp: PropTypes.string,
       postContent: PropTypes.string,
       reactions: PropTypes.string,
-      posterPhoto: PropTypes.string,
-      firebaseKey: PropTypes.string,
     },
   ),
   onUpdate: PropTypes.func.isRequired,
