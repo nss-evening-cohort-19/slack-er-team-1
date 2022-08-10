@@ -42,7 +42,8 @@ function TextInput({ postObj, channelObj, messageToEdit }) {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (messageToEdit) {
-      updatePost(formInput).then(() => getAllThePosts());
+      updatePost(formInput, postObj).then(() => getAllThePosts());
+      setFormInput(initialState);
     } else {
       const payload = {
         ...formInput,
@@ -54,7 +55,6 @@ function TextInput({ postObj, channelObj, messageToEdit }) {
       };
       createPost(payload).then(() => {
         getAllThePosts();
-        
         setFormInput(initialState);
       });
     }

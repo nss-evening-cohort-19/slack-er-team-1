@@ -51,7 +51,7 @@ const deleteSinglePost = (firebaseKey) => new Promise((resolve, reject) => {
 
 const updatePost = (postObj) => new Promise((resolve, reject) => {
   axios.patch(`${dbUrl}/posts/${postObj.firebaseKey}.json`, postObj)
-    .then(() => getPosts(postObj.uid)).then(resolve)
+    .then(() => getPosts(postObj)).then(resolve)
     .catch(reject);
 });
 
