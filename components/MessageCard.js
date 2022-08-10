@@ -1,20 +1,18 @@
 /* eslint-disable @next/next/no-img-element */
 import PropTypes from 'prop-types';
 
-import { useState } from 'react';
 import { useAuth } from '../utils/context/authContext';
 import { deleteSingleMessage, getSingleMessage } from '../api/messagesData';
 
 export default function MessageCard({ messageObj, onUpdate }) {
   const { user } = useAuth();
-  const [targetedMessageObj, setTargtedMessageObj] = useState({});
   const handleDelete = () => {
     deleteSingleMessage(messageObj.firebaseKey).then(() => onUpdate());
   };
-  const formMessageObj = () => {
-    getSingleMessage(messageObj.firebaseKey).then(setTargtedMessageObj);
-    console.warn(targetedMessageObj.firebaseKey);
+  const editMessage = () => {
+    getSingleMessage(messageObj.firebaseKey).then(() => onUpdate());
   };
+
   return (
     <div>
       <div className="panel panel-default postCard">
@@ -29,7 +27,7 @@ export default function MessageCard({ messageObj, onUpdate }) {
         user.uid === messageObj.uid
           ? (
             <>
-              <button type="button" className="editMessage" onClick={formMessageObj(messageObj.firebaseKey)}>Edit Reply</button>
+              <button type="button" className="editMessage" onClick={editMessage}>Edit Reply</button>
               <button type="button" className="deleteMessage" onClick={handleDelete}>Delete Reply</button>
             </>
           )
