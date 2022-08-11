@@ -103,13 +103,14 @@ TextInput.propTypes = {
     firebaseKey: PropTypes.string,
     postContent: PropTypes.string,
   }),
-  onUpdate: PropTypes.func.isRequired,
+  onUpdate: PropTypes.func,
 };
 
 TextInput.defaultProps = {
   postObj: initialState,
   channelObj: initialState,
   messageToEdit: initialState,
+  onUpdate: () => {},
 };
 
 export default TextInput;
