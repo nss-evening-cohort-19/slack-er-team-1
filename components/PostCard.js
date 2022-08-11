@@ -5,7 +5,7 @@ import getMessagesOnPost from '../api/mergedData';
 import Thread from './Thread';
 import { deleteSinglePost } from '../api/postsData';
 
-export default function PostCard({ postObj, onUpdate }) {
+export default function PostCard({ postObj, onUpdate, setMessageToEdit }) {
   const handleDelete = () => {
     if (window.confirm('Delete post?')) {
       deleteSinglePost(postObj.firebaseKey).then(() => onUpdate());
@@ -39,7 +39,7 @@ export default function PostCard({ postObj, onUpdate }) {
           <Thread postObj={postObj} messageNum={messageNum} messages={messages} onUpdate={showMessageDetails} />
           Replies
         </div>
-        <button type="button" className="editMessage">Edit Message</button>
+        <button type="button" onClick={() => setMessageToEdit(postObj)} className="editMessage">Edit Message</button>
         <button type="button" onClick={handleDelete} className="deleteMessage">Delete Message</button>
       </div>
     </div>
@@ -58,6 +58,7 @@ PostCard.propTypes = {
     },
   ),
   onUpdate: PropTypes.func.isRequired,
+  setMessageToEdit: PropTypes.func.isRequired,
 };
 
 PostCard.defaultProps = {
