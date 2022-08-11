@@ -2,30 +2,30 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-function User({
-  image, name, email, lastLogin,
-}) {
+function User({ userObj }) {
   return (
     <div>
-      <img src={image} alt={name} />
-      <h1>{name}</h1>
-      <h2>{email}</h2>
-      <h3>{lastLogin}</h3>,
+      <img src={userObj.imageUrl} alt={userObj.name} />
+      <h1>{userObj.name}</h1>
+      <h2>{userObj.email}</h2>
+      <h3>{userObj.tagline}</h3>
+      <h3>{userObj.lastLogin}</h3>
+      <h3>{userObj.phone}</h3>
     </div>
   );
 }
-
 User.propTypes = {
-  image: PropTypes.string,
-  name: PropTypes.string,
-  email: PropTypes.string,
-  lastLogin: PropTypes.string,
+  userObj: PropTypes.shape({
+    imageUrl: PropTypes.string,
+    name: PropTypes.string,
+    email: PropTypes.string,
+    lastLogin: PropTypes.string,
+    phone: PropTypes.string,
+    tagline: PropTypes.string,
+    timeZone: PropTypes.string,
+  }),
 };
 User.defaultProps = {
-  image: '',
-  name: '',
-  email: '',
-  lastLogin: '',
+  userObj: [],
 };
-
 export default User;

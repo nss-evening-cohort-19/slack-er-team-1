@@ -1,11 +1,9 @@
 import React, { useEffect, useState } from 'react';
-import CreateUserForm from '../components/CreateUserForm';
 import PostCard from '../components/PostCard';
 import Sidebar from '../components/Sidebar';
 import { getAllPosts } from '../api/postsData';
 import TextInput from '../components/TextInput';
 import { useAuth } from '../utils/context/authContext';
-// import Channel from '../components/Channel';
 
 function Home() {
   const { user } = useAuth();
@@ -27,8 +25,6 @@ function Home() {
     <div>
       <br />
       <Sidebar />
-      {/* <Channel /> */}
-      <CreateUserForm />
       <div className="postCardsDiv">
         <div className="text-center my-4 teamCardsDiv">
           <div className="d-flex flex-wrap postsCardContainer">
