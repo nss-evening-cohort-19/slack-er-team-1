@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import { useRouter } from 'next/router';
 import { useAuth } from '../utils/context/authContext';
-import { createUser, getUsers, updateUser } from '../api/userData';
+import { createUser, getUsersByUid, updateUser } from '../api/userData';
 
 const initialState = {
   name: '',
@@ -19,7 +19,7 @@ function CreateUserForm({ obj }) {
   const { user } = useAuth();
 
   useEffect(() => {
-    getUsers(user.uid).then(setProfile);
+    getUsersByUid(user.uid).then(setProfile);
     if (obj.firebaseKey) setFormInput(obj);
   }, [obj, user]);
 
@@ -34,7 +34,12 @@ function CreateUserForm({ obj }) {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (obj.firebaseKey) {
-      updateUser(formInput).then(() => router.push('/'));
+      const payload = {
+        ...formInput,
+        name: user.displayName,
+        email: user.email,
+      };
+      updateUser(payload).then(() => router.push('/profile'));
     } else {
       const payload = {
         ...formInput,
@@ -43,18 +48,15 @@ function CreateUserForm({ obj }) {
         timeZone: Intl.DateTimeFormat().resolvedOptions().timeZone,
       };
       createUser(payload).then(() => {
-        router.push('/');
+        router.push('/profile');
       });
     }
   };
   return (
     <>
       <form onSubmit={handleSubmit}>
-        <input required type="text" name="name" value={formInput.name} className="form-control" placeholder="First and Last Name" onChange={handleChange} />
         <input required type="text" name="tagline" value={formInput.tagline} className="form-control" placeholder="What's your tagline?" onChange={handleChange} />
-        <input required type="email" name="email" value={formInput.email} className="form-control" placeholder="E-mail Address" onChange={handleChange} />
         <input required type="tel" name="phone" value={formInput.phone} className="form-control" placeholder="Phone Number" onChange={handleChange} />
-        <input required type="URL" name="imageUrl" value={formInput.imageUrl} className="form-control" placeholder="Profile Image URL" onChange={handleChange} />
         <button type="submit" className="btn btn-primary">
           Submit
         </button>

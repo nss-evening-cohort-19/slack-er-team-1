@@ -3,7 +3,7 @@ import { clientCredentials } from '../utils/client';
 
 const dbUrl = clientCredentials.databaseURL;
 
-const getUsers = (uid) => new Promise((resolve, reject) => {
+const getUsersByUid = (uid) => new Promise((resolve, reject) => {
   axios.get(`${dbUrl}/users.json?orderBy="uid"&equalTo="${uid}"`)
     .then((response) => {
       if (response.data) {
@@ -20,7 +20,7 @@ const createUser = (userObj) => new Promise((resolve, reject) => {
     .then((response) => {
       const payload = { firebaseKey: response.data.name };
       axios.patch(`${dbUrl}/users/${response.data.name}.json`, payload).then(() => {
-        getUsers(userObj.uid).then((userArray) => resolve(userArray));
+        getUsersByUid(userObj.uid).then((userArray) => resolve(userArray));
       });
     }).catch((error) => reject(error));
 });
@@ -31,15 +31,15 @@ const getSingleUser = (firebaseKey) => new Promise((resolve, reject) => {
     .catch((error) => reject(error));
 });
 
-const deleteSingleUser = (firebaseKey) => new Promise((resolve, reject) => {
-  axios.delete(`${dbUrl}/users/${firebaseKey}.json`)
+const deleteSingleUser = (uid) => new Promise((resolve, reject) => {
+  axios.delete(`${dbUrl}/users/${uid}.json`)
     .then((response) => resolve(response.data))
     .catch((error) => reject(error));
 });
 
 const updateUser = (userObj) => new Promise((resolve, reject) => {
   axios.patch(`${dbUrl}/users/${userObj.firebaseKey}.json`, userObj)
-    .then(() => getUsers(userObj.uid)).then(resolve)
+    .then(() => getUsersByUid(userObj.uid)).then(resolve)
     .catch(reject);
 });
 /* placeholder for merge data
@@ -55,7 +55,7 @@ const viewUserDetails = (firebaseKey) => new Promise((resolve, reject) => {
 }); */
 
 export {
-  getUsers,
+  getUsersByUid,
   createUser,
   getSingleUser,
   deleteSingleUser,
