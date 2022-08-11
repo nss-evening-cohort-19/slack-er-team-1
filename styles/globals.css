@@ -215,3 +215,11 @@ body {
 .profile {
   color: white;
 }
+
+.logo {
+  height: 50px;
+}
+
+.noShow{
+  display: none;
+}

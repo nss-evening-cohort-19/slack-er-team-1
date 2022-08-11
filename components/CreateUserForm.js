@@ -36,13 +36,19 @@ function CreateUserForm({ obj }) {
     if (obj.firebaseKey) {
       const payload = {
         ...formInput,
+        imageUrl: user.photoURL,
         name: user.displayName,
         email: user.email,
+        lastLogin: new Date().toLocaleString(),
+        timeZone: Intl.DateTimeFormat().resolvedOptions().timeZone,
       };
       updateUser(payload).then(() => router.push('/profile'));
     } else {
       const payload = {
         ...formInput,
+        name: user.displayName,
+        imageUrl: user.photoURL,
+        email: user.email,
         uid: user.uid,
         lastLogin: new Date().toLocaleString(),
         timeZone: Intl.DateTimeFormat().resolvedOptions().timeZone,

@@ -31,8 +31,8 @@ const getSingleUser = (firebaseKey) => new Promise((resolve, reject) => {
     .catch((error) => reject(error));
 });
 
-const deleteSingleUser = (uid) => new Promise((resolve, reject) => {
-  axios.delete(`${dbUrl}/users/${uid}.json`)
+const deleteSingleUser = (firebaseKey) => new Promise((resolve, reject) => {
+  axios.delete(`${dbUrl}/users/${firebaseKey}.json`)
     .then((response) => resolve(response.data))
     .catch((error) => reject(error));
 });
@@ -42,17 +42,6 @@ const updateUser = (userObj) => new Promise((resolve, reject) => {
     .then(() => getUsersByUid(userObj.uid)).then(resolve)
     .catch(reject);
 });
-/* placeholder for merge data
-
-const viewUserDetails = (firebaseKey) => new Promise((resolve, reject) => {
-  getSingleUser(firebaseKey)
-    .then((userObj) => {
-      getSingleUser(userObj.firebaseKey)
-        .then((singleUserObj) => {
-          resolve({ userObj, ...singleUserObj });
-        });
-    }).catch((error) => reject(error));
-}); */
 
 export {
   getUsersByUid,
@@ -60,5 +49,5 @@ export {
   getSingleUser,
   deleteSingleUser,
   updateUser,
-  // viewUserDetails,
+
 };
