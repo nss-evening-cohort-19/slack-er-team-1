@@ -3,7 +3,7 @@
 import Link from 'next/link';
 import React, { useEffect, useState } from 'react';
 import { Button } from 'react-bootstrap';
-import { deleteSingleUser, getUsersByUid } from '../api/userData';
+import { getUsersByUid } from '../api/userData';
 import Sidebar from '../components/Sidebar';
 import User from '../components/User';
 import { useAuth } from '../utils/context/authContext';
@@ -11,11 +11,7 @@ import { useAuth } from '../utils/context/authContext';
 export default function Profile() {
   const [member, setMember] = useState([]);
   const { user } = useAuth();
-  const deleteThisUser = () => {
-    if (window.confirm(`Delete ${user.displayName}?`)) {
-      deleteSingleUser(member.firebaseKey);
-    }
-  };
+
   useEffect(() => {
     getUsersByUid(user.uid).then(setMember);
   }, []);
@@ -32,9 +28,6 @@ export default function Profile() {
                 Edit Profile
               </Button>
             </Link>
-            <Button type="button" className={memberProfile.uid !== user.uid ? 'noShow' : ''} variant="outline-danger" onClick={deleteThisUser}>
-              Delete Profile
-            </Button>
           </>
         ))}
       </div>
