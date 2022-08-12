@@ -43,7 +43,7 @@ export default function PostCard({ postObj, onUpdate, setMessageToEdit }) {
 
   return (
     <div>
-      <div className="postCard container-fluid">
+      <div className="postCard">
         <div className="userProfileHover">
           <img width="30px" height="30px" src={postObj.posterPhoto} alt="user" className="user-icon" />
         </div>

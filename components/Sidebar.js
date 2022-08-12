@@ -13,15 +13,15 @@ export default function Sidebar() {
   }, [user.uid]);
 
   return (
-    <div className="offcanvas offcanvas-start show sidebarStyle" data-bs-backdrop="static" tabIndex="-1" id="staticBackdrop" aria-labelledby="staticBackdropLabel">
-      <div className="offcanvas-header">
+    <div className="sidebarStyle" data-bs-backdrop="static" tabIndex="-1" id="staticBackdrop" aria-labelledby="staticBackdropLabel">
+      <div className="sidebarLogoName">
         <img src="https://coursereport-s3-production.global.ssl.fastly.net/uploads/school/logo/28/original/nss-logo-compact.png" alt="NSS logo" className="logo" />
-        <h5 className="offcanvas-title" id="staticBackdropLabel">
+        <h5 className="channelNameSidebar" id="staticBackdropLabel">
           Channel Name
         </h5>
       </div>
       <hr />
-      <div className="offcanvas-body">
+      <div>
         <div>Threads</div>
         <div>
           Direct messages
