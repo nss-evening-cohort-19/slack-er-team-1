@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import { useAuth } from '../utils/context/authContext';
@@ -76,7 +77,7 @@ function TextInput({
         <div className="postSubmitToolbar">
           <div className="leftToolbar" />
           <button type="submit" className="submitPostBtn">
-            Send
+            <img src="https://cdn-icons-png.flaticon.com/512/3884/3884623.png" alt="paper-plane" className="icon" />
           </button>
         </div>
       </form>

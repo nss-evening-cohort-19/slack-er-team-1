@@ -223,3 +223,8 @@ body {
 .noShow{
   display: none;
 }
+
+.icon {
+  height: 20px;
+  padding: 2px;
+}
