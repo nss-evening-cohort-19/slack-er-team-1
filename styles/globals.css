@@ -96,6 +96,11 @@ body {
   background-color: #1b1d21;
   color: white;
   border: none;
+  text-align: center;
+  height: 30px;
+  display: flex;
+  align-content: center;
+  padding-bottom: 30px;
 }
 
 .morePostInfoBtn:hover {

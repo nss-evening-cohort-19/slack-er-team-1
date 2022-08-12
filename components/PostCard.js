@@ -6,6 +6,7 @@ import PropTypes from 'prop-types';
 import getMessagesOnPost from '../api/mergedData';
 import Thread from './Thread';
 import { deleteSinglePost } from '../api/postsData';
+import { useAuth } from '../utils/context/authContext';
 
 export default function PostCard({ postObj, onUpdate, setMessageToEdit }) {
   const handleDelete = () => {
@@ -13,6 +14,8 @@ export default function PostCard({ postObj, onUpdate, setMessageToEdit }) {
       deleteSinglePost(postObj.firebaseKey).then(() => onUpdate());
     }
   };
+
+  const { user } = useAuth();
 
   const [show, setShow] = useState(false);
 
@@ -48,7 +51,7 @@ export default function PostCard({ postObj, onUpdate, setMessageToEdit }) {
           </div>
         </div>
         <div className="postBtnDiv">
-          <Button className="morePostInfoBtn" onClick={handleShow}>
+          <Button className={postObj.uid !== user.uid ? 'noShow' : 'morePostInfoBtn'} onClick={handleShow}>
             ...
           </Button>
           <Modal className="postEditModal" show={show} onHide={handleClose}>
@@ -76,6 +79,7 @@ PostCard.propTypes = {
       timeStamp: PropTypes.string,
       postContent: PropTypes.string,
       reactions: PropTypes.string,
+      uid: PropTypes.string,
     },
   ),
   onUpdate: PropTypes.func.isRequired,
