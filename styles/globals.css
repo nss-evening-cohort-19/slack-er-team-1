@@ -97,10 +97,9 @@ body {
   color: white;
   border: none;
   text-align: center;
-  height: 30px;
-  display: flex;
-  align-content: center;
-  padding-bottom: 30px;
+  height: 0;
+  line-height: 0;
+  margin-bottom: 10px;
 }
 
 .morePostInfoBtn:hover {
