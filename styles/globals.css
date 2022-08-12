@@ -211,3 +211,15 @@ body {
 .all-channels-page {
   background-color: white;
 }
+
+.profile {
+  color: white;
+}
+
+.logo {
+  height: 50px;
+}
+
+.noShow{
+  display: none;
+}

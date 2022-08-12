@@ -1,17 +1,35 @@
 import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import { useAuth } from '../utils/context/authContext';
-import { createPost, updatePost } from '../api/postsData';
+import { createPost, getPosts, updatePost } from '../api/postsData';
 import { getSingleChannel } from '../api/channelData';
 
 const initialState = {
   postContent: '',
 };
 
-function TextInput({ postObj, channelObj, onUpdate }) {
-  const [formInput, setFormInput] = useState(initialState);
+function TextInput({
+  postObj, channelObj, messageToEdit, onUpdate,
+}) {
+  const [formInput, setFormInput] = useState({ postContent: messageToEdit.postContent || '' });
+  const [posts, setPosts] = useState(initialState);
+  const [, setProfile] = useState([]);
   const { user } = useAuth();
+
+  const getAllThePosts = () => {
+    getPosts().then((post) => {
+      setPosts(post);
+    });
+  };
+
   useEffect(() => {
+    setFormInput({ postContent: messageToEdit.postContent });
+  }, [messageToEdit]);
+
+  useEffect(() => {
+    getAllThePosts();
+    getPosts(user.uid).then(setProfile);
+
     onUpdate();
     if (postObj.firebaseKey) setFormInput(postObj);
     getSingleChannel().then(channelObj);
@@ -28,8 +46,12 @@ function TextInput({ postObj, channelObj, onUpdate }) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (postObj.firebaseKey) {
-      updatePost(formInput).then(() => onUpdate());
+    if (messageToEdit) {
+      const payload = {
+        ...messageToEdit,
+        ...formInput,
+      };
+      updatePost(payload.firebaseKey, payload).then(() => getAllThePosts());
       setFormInput(initialState);
     } else {
       const payload = {
@@ -46,10 +68,11 @@ function TextInput({ postObj, channelObj, onUpdate }) {
       });
     }
   };
+
   return (
     <div className="mainPostContainer">
       <form className="commentInputContainer" onSubmit={handleSubmit}>
-        <input required type="text" name="postContent" value={formInput?.postContent} className="form-control postContentDiv" placeholder="Message Channel" onChange={handleChange} />
+        <input required type="text" name="postContent" value={formInput?.postContent} obj={posts} className="form-control postContentDiv" placeholder="Message Channel" onChange={handleChange} />
         <div className="postSubmitToolbar">
           <div className="leftToolbar" />
           <button type="submit" className="submitPostBtn">
@@ -76,12 +99,19 @@ TextInput.propTypes = {
   channelObj: PropTypes.shape({
     firebaseKey: PropTypes.string,
   }),
+
+  messageToEdit: PropTypes.shape({
+    firebaseKey: PropTypes.string,
+    postContent: PropTypes.string,
+  }),
+
   onUpdate: PropTypes.func,
 };
 
 TextInput.defaultProps = {
   postObj: initialState,
   channelObj: initialState,
+  messageToEdit: initialState,
   onUpdate: () => {},
 };
 
