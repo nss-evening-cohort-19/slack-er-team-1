@@ -1,6 +1,5 @@
 /* eslint-disable @next/next/no-img-element */
 import React, { useEffect, useState } from 'react';
-import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import { Button } from 'react-bootstrap';
 import PropTypes from 'prop-types';
@@ -11,7 +10,6 @@ import { useAuth } from '../utils/context/authContext';
 // import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 export default function PostCard({ postObj, onUpdate, setMessageToEdit }) {
-  const { user } = useAuth();
   const handleDelete = () => {
     if (window.confirm('Delete post?')) {
       deleteSinglePost(postObj.firebaseKey).then(() => onUpdate());
