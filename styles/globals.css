@@ -1,6 +1,7 @@
 @import 'bootstrap/dist/css/bootstrap.css';
 @import url('https://fonts.googleapis.com/css2?family=Lato:wght@300&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Lato:wght@700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap');
 
 html,
 body {
@@ -25,7 +26,7 @@ body {
 }
 
 a {
-  color: black;
+  color: #cbcccd;
   text-decoration: none;
   font-family: 'Lato', sans-serif;
 }
@@ -145,7 +146,7 @@ body {
   text-align: left;
   width: 250px;
   background-color: #19171d;
-  color: #9b9a9d;
+  color: #c6c8c9;
   position: fixed;
   height: 100%;
   z-index: 20;
@@ -345,16 +346,16 @@ body {
 .accordionChannels {
   background-color: #19161d !important;
   border: none;
-  color: #9b9a9d !important;
+  color: #c6c8c9 !important;
 }
 
 .accordion-button {
   background-color: #19161d !important;
-  color: #9b9a9d !important;
+  color: #c6c8c9 !important;
 }
 
 .accordion-item {
-  color: #9b9a9d !important;
+  color: #c6c8c9 !important;
   background-color: #19161d !important;
   border: none;
   text-align: left !important;
@@ -363,15 +364,15 @@ body {
 
 .accordionStyle {
     background-color: #19161d !important;
-    color: #9b9a9d !important;
+    color: #c6c8c9 !important;
 }
 
 .accordion-button {
-  color: #9b9a9d !important;
+  color: #c6c8c9 !important;
 }
 
 .collapsed {
-  color: #9b9a9d !important;
+  color: #c6c8c9 !important;
 }
 
 .listItemsChannels {
@@ -393,4 +394,9 @@ ul {
 .threadStyle {
   background-color: #222529;
   color: #cbcccd;
+  display: flex;
+}
+
+.messageContainer {
+  flex-direction: row;
 }

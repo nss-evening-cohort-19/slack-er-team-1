@@ -26,7 +26,7 @@ export default function Thread({
       </Button>
       <Offcanvas className="threadStyle" show={show} placement="end" onHide={handleClose} scroll="true">
         <Offcanvas.Header closeButton>
-          <Offcanvas.Title>Thread insert channel name</Offcanvas.Title>
+          <Offcanvas.Title className="threadTitle">Thread insert channel name</Offcanvas.Title>
         </Offcanvas.Header>
         <Offcanvas.Body>
           <div className="message-container">
