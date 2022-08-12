@@ -20,7 +20,7 @@ function Home() {
 
   useEffect(() => {
     getThePosts();
-  }, [posts]);
+  }, []);
   return (
     <div>
       <br />
