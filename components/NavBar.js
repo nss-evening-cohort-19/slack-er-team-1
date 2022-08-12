@@ -2,7 +2,6 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import React from 'react';
 import Link from 'next/link';
-// import Search from './Search';
 import { signOut } from '../utils/auth';
 import { useAuth } from '../utils/context/authContext';
 import ProfileDropdown from './ProfileDropdown';
@@ -25,9 +24,7 @@ export default function NavBar() {
           <ul className="navbar-nav me-auto">
             <li className="nav-item">
               <Link passHref href="/">
-                <a className="nav-link">
-                  Home
-                </a>
+                <a className="nav-link">Home</a>
               </Link>
             </li>
             <li className="nav-item dropdown">
@@ -40,12 +37,15 @@ export default function NavBar() {
                   <button type="button" className="btn btn-danger" onClick={signOut}>
                     Sign Out
                   </button>
+                  <Link passHref href="/profile">
+                    <button type="button" className="btn btn-primary">
+                      Profile
+                    </button>
+                  </Link>
                 </div>
               </ul>
             </li>
-            <div>
-              {/* <Search /> */}
-            </div>
+            <div />
           </ul>
         </div>
       </div>

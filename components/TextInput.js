@@ -9,13 +9,15 @@ const initialState = {
 };
 
 function TextInput({
-  postObj, channelObj, onUpdate, messageToEdit,
+  postObj, channelObj, messageToEdit, onUpdate,
 }) {
   const [formInput, setFormInput] = useState({ postContent: messageToEdit.postContent || '' });
   const { user } = useAuth();
+
   useEffect(() => {
     setFormInput({ postContent: messageToEdit.postContent });
   }, [messageToEdit]);
+
   useEffect(() => {
     if (postObj.firebaseKey) setFormInput(postObj);
     getSingleChannel().then(channelObj);
@@ -54,18 +56,26 @@ function TextInput({
       });
     }
   };
+
   return (
-    <div className="mainPostContainer">
-      <form className="commentInputContainer" onSubmit={handleSubmit}>
-        <input required type="text" name="postContent" value={formInput?.postContent} className="form-control postContentDiv" placeholder="Message Channel" onChange={handleChange} />
-        <div className="postSubmitToolbar">
-          <div className="leftToolbar" />
-          <button type="submit" className="submitPostBtn">
-            Send
-          </button>
+    <>
+      <div>
+        <div className="mainPostContainer">
+          <form className="commentInputContainer" onSubmit={handleSubmit}>
+            <input required type="text" name="postContent" value={formInput?.postContent} className="form-control postContentDiv" placeholder="Message Channel" onChange={handleChange} />
+            <div className="postSubmitToolbar">
+              <div className="leftToolbar" />
+              <button type="submit" className="submitPostBtn">
+                Send
+              </button>
+            </div>
+          </form>
         </div>
-      </form>
-    </div>
+      </div>
+      <div>
+        <div className="blockPosts" />
+      </div>
+    </>
   );
 }
 
@@ -84,11 +94,11 @@ TextInput.propTypes = {
   channelObj: PropTypes.shape({
     firebaseKey: PropTypes.string,
   }),
-  onUpdate: PropTypes.func,
   messageToEdit: PropTypes.shape({
     firebaseKey: PropTypes.string,
     postContent: PropTypes.string,
   }),
+  onUpdate: PropTypes.func,
 };
 
 TextInput.defaultProps = {

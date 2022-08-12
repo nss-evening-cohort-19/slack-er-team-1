@@ -1,12 +1,13 @@
 /* eslint-disable @next/next/no-img-element */
 import React, { useEffect, useState } from 'react';
-import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
+import { Button } from 'react-bootstrap';
 import PropTypes from 'prop-types';
 import getMessagesOnPost from '../api/mergedData';
 import Thread from './Thread';
 import { deleteSinglePost } from '../api/postsData';
 import { useAuth } from '../utils/context/authContext';
+// import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 export default function PostCard({ postObj, onUpdate, setMessageToEdit }) {
   const handleDelete = () => {
@@ -14,10 +15,14 @@ export default function PostCard({ postObj, onUpdate, setMessageToEdit }) {
       deleteSinglePost(postObj.firebaseKey).then(() => onUpdate());
     }
   };
+
   const { user } = useAuth();
+
   const [show, setShow] = useState(false);
+
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
+
   const [messageNum, setMessageNum] = useState(0);
   const [messages, setMessages] = useState([]);
   const showMessageDetails = () => {
@@ -31,6 +36,11 @@ export default function PostCard({ postObj, onUpdate, setMessageToEdit }) {
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
+  const clickHandler = () => {
+    setMessageToEdit(postObj);
+    handleClose();
+  };
+
   return (
     <div>
       <div className="postCard">
@@ -39,6 +49,7 @@ export default function PostCard({ postObj, onUpdate, setMessageToEdit }) {
         </div>
         <div className="postContentAlign">
           <div className="panel-heading">{postObj.posterName} {postObj.timeStamp}</div>
+          <br />
           <div className="panel-body-content">{postObj.postContent}</div>
           {/* <div className="panel-body-reactions">{postObj.reactions}</div> */}
           <br />
@@ -52,7 +63,7 @@ export default function PostCard({ postObj, onUpdate, setMessageToEdit }) {
           </Button>
           <Modal className="postEditModal" show={show} onHide={handleClose}>
             <Modal.Header className="modalHeader" closeButton>
-              <Button className="editMessage" onClick={() => setMessageToEdit(postObj)}>
+              <Button className="editMessage" onClick={clickHandler}>
                 Edit
               </Button>
               <Button className="deleteMessage" onClick={handleDelete}>
@@ -61,6 +72,7 @@ export default function PostCard({ postObj, onUpdate, setMessageToEdit }) {
             </Modal.Header>
           </Modal>
         </div>
+
       </div>
     </div>
   );
