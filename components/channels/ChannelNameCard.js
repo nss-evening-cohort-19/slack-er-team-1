@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useAuth } from '../../utils/context/authContext';
-import { getChannels, updateUidOfChannel } from '../../api/channelData';
+import { getChannels } from '../../api/channelData';
 import { createJoinChannel } from '../../api/joinData';
 import { joiningChannel } from '../../api/mergedData';
 
@@ -22,9 +22,12 @@ function ChannelNameCard() {
       channelId: e.target.id,
       userId: user.uid,
     };
+    const newUid = {
+      uid: user.uid,
+    };
+
     createJoinChannel(payload);
-    joiningChannel(payload.channelId);
-    updateUidOfChannel(payload.userId);
+    joiningChannel(payload.channelId, newUid);
   };
 
   return (
