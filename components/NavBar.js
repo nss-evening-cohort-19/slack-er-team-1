@@ -22,11 +22,6 @@ export default function NavBar() {
 
         <div className="collapse navbar-collapse" id="navbarTogglerDemo01">
           <ul className="navbar-nav me-auto">
-            <li className="nav-item">
-              <Link passHref href="/">
-                <a className="nav-link">Home</a>
-              </Link>
-            </li>
             <li className="nav-item dropdown">
               <a className="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">
                 <img src={user.photoURL} width="30px" height="30px" alt="user" className="user-icon" />
@@ -34,11 +29,11 @@ export default function NavBar() {
               <ul className="dropdown-menu">
                 <div>
                   <ProfileDropdown />
-                  <button type="button" className="btn btn-danger" onClick={signOut}>
+                  <button type="button" className="btn" onClick={signOut}>
                     Sign Out
                   </button>
                   <Link passHref href="/profile">
-                    <button type="button" className="btn btn-primary">
+                    <button type="button" className="btn">
                       Profile
                     </button>
                   </Link>

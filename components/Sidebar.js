@@ -16,18 +16,18 @@ export default function Sidebar() {
     <div className="offcanvas offcanvas-start show sidebarStyle" data-bs-backdrop="static" tabIndex="-1" id="staticBackdrop" aria-labelledby="staticBackdropLabel">
       <div className="offcanvas-header">
         <img src="https://coursereport-s3-production.global.ssl.fastly.net/uploads/school/logo/28/original/nss-logo-compact.png" alt="NSS logo" className="logo" />
-        <h5 className="offcanvas-title" id="staticBackdropLabel">
-          Channel Name
-        </h5>
+        <h4 className="offcanvas-title" id="staticBackdropLabel">
+          <b>Nashville Software Shool</b>
+        </h4>
       </div>
       <hr />
       <div className="offcanvas-body">
         <div>
-          <img src="https://cdn-icons-png.flaticon.com/512/3884/3884366.png" alt="speech-bubble" className="icon" />
+          <img src="https://cdn-icons-png.flaticon.com/512/3884/3884366.png" alt="threads" className="icon" />
           Threads
         </div>
         <div>
-          <img src="https://cdn-icons.flaticon.com/png/512/3114/premium/3114649.png?token=exp=1660317523~hmac=ad62b9a1a3a08f0f10afd974bd6075a8" alt="double-speech-bubble" className="icon" />
+          <img src="https://cdn-icons-png.flaticon.com/512/892/892177.png" alt="direct-messages" className="icon" />
           Direct messages
         </div>
         <div>
@@ -64,7 +64,7 @@ export default function Sidebar() {
           </ul>
         </div>
         <br />
-        <button className="btn btn-dark btn-sm dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+        <button className="btn btn-dark btn-sm dropdown-toggle" type="button">
           Direct Messages
         </button>
         <div># Slack-er Bot</div>

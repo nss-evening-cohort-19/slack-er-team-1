@@ -5,7 +5,7 @@ import { useAuth } from '../utils/context/authContext';
 export default function ProfileDropdown() {
   const { user } = useAuth();
   return (
-    <div>
+    <div className="profileDropdown">
       <img src={user.photoURL} alt={user.displayName} />
       <h5>{user.displayName}</h5>
       <h6>{user.email}</h6>
