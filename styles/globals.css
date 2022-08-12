@@ -341,3 +341,51 @@ body {
   margin-top: 25px;
   font-weight: bold;
 }
+
+.accordionChannels {
+  background-color: #19161d !important;
+  border: none;
+  color: #9b9a9d !important;
+}
+
+.accordion-button {
+  background-color: #19161d !important;
+  color: #9b9a9d !important;
+}
+
+.accordion-item {
+  color: #9b9a9d !important;
+  background-color: #19161d !important;
+  border: none;
+  text-align: left !important;
+  float: left !important;
+}
+
+.accordionStyle {
+    background-color: #19161d !important;
+    color: #9b9a9d !important;
+}
+
+.accordion-button {
+  color: #9b9a9d !important;
+}
+
+.collapsed {
+  color: #9b9a9d !important;
+}
+
+.listItemsChannels {
+  text-align: left !important;
+  float: left !important;
+}
+
+ul {
+  list-style-type: none !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+.bottomSidebar {
+  display: flex;
+  flex-direction: column;
+}
