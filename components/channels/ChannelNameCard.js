@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useAuth } from '../../utils/context/authContext';
 import { getChannels } from '../../api/channelData';
 import { createJoinChannel } from '../../api/joinData';
-import { joiningChannel } from '../../api/mergedData';
+// import { joiningChannel } from '../../api/mergedData';
 
 function ChannelNameCard() {
   const [allChannels, setAllChannels] = useState([]);
@@ -23,9 +23,7 @@ function ChannelNameCard() {
       userId: user.uid,
     };
 
-    createJoinChannel(payload).then((newChannelObj) => {
-      joiningChannel(newChannelObj);
-    });
+    createJoinChannel(payload);
   };
 
   return (

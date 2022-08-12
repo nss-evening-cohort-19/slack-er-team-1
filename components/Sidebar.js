@@ -1,15 +1,20 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable @next/next/no-img-element */
 import React, { useEffect, useState } from 'react';
 import Link from 'next/link';
 import { useAuth } from '../utils/context/authContext';
-import { getJoinChannels } from '../api/joinData';
+import { joiningChannel } from '../api/mergedData';
 
 export default function Sidebar() {
   const [channelList, setChannelList] = useState([]);
+  // const [joinTable, setJoinTable] = useState([]);
   const { user } = useAuth();
 
   useEffect(() => {
-    getJoinChannels(user.uid).then(setChannelList);
+    joiningChannel(user.uid).then((response) => {
+      console.warn(response, 'Right Here');
+      setChannelList(response);
+    });
   }, [user.uid]);
 
   return (

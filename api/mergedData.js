@@ -1,10 +1,7 @@
-import axios from 'axios';
-import { createChannel, getChannelsByUid, getSingleChannel } from './channelData';
+import { getSingleChannel } from './channelData';
 import { getMessagesByPost } from './messagesData';
 import { getSinglePost } from './postsData';
-import { clientCredentials } from '../utils/client';
-
-const dbUrl = clientCredentials.databaseURL;
+import { getJoinChannels } from './joinData';
 
 // GET COMMENTS BY THREAD
 const getMessagesOnPost = (postFirebaseKey) => new Promise((resolve, reject) => {
@@ -16,15 +13,12 @@ const getMessagesOnPost = (postFirebaseKey) => new Promise((resolve, reject) => 
 });
 
 // JOIN A CHANNEL
-const joiningChannel = (channelFbKey, userId) => new Promise((resolve, reject) => {
-  getSingleChannel(channelFbKey).then((response) => {
-    axios.patch(`${dbUrl}/channels/${response.firebaseKey}.json`, userId).then((singChannelObj) => {
-      createChannel(singChannelObj).then(() => {
-        getChannelsByUid(response.uid).then((channelArray) => resolve(channelArray));
-      });
+const joiningChannel = (uid) => new Promise((resolve, reject) => {
+  getJoinChannels(uid).then((joinArray) => {
+    const userChannel = joinArray.map((joinObj) => getSingleChannel(joinObj.channelId)).then(() => {
+      resolve(userChannel);
     });
-  })
-    .catch(reject);
+  }).catch(reject);
 });
 
 export {
