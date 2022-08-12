@@ -389,3 +389,8 @@ ul {
   display: flex;
   flex-direction: column;
 }
+
+.threadStyle {
+  background-color: #222529;
+  color: #cbcccd;
+}
