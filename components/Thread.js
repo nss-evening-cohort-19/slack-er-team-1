@@ -10,6 +10,7 @@ export default function Thread({
   postObj, messageNum, onUpdate, messages,
 }) {
   const [show, setShow] = useState(false);
+  const [replyToEdit, setReplyToEdit] = useState();
   const handleClose = () => setShow(false);
   const toggleShow = () => setShow((s) => !s);
   const render = () => {
@@ -22,7 +23,7 @@ export default function Thread({
   return (
     <>
       <Button onClick={toggleShow}>
-        {messageNum}
+        {messageNum} replies
       </Button>
       <Offcanvas show={show} placement="end" onHide={handleClose} scroll="true">
         <Offcanvas.Header closeButton>
@@ -51,9 +52,9 @@ export default function Thread({
           </div>
           <div className="comment-card-container">
             {messages.map((message) => (
-              <MessageCard key={message.firebaseKey} messageObj={message} messages={messages} onUpdate={render} />
+              <MessageCard key={message.firebaseKey} setReplyToEdit={setReplyToEdit} messageObj={message} messages={messages} onUpdate={render} />
             ))}
-            <MessageInput postObj={postObj} onUpdate={render} />
+            <MessageInput postObj={postObj} replyToEdit={replyToEdit} onUpdate={render} />
           </div>
         </Offcanvas.Body>
       </Offcanvas>

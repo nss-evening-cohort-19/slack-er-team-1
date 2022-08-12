@@ -1,16 +1,23 @@
 /* eslint-disable @next/next/no-img-element */
 import React, { useEffect, useState } from 'react';
+import Button from 'react-bootstrap/Button';
+import Modal from 'react-bootstrap/Modal';
 import PropTypes from 'prop-types';
 import getMessagesOnPost from '../api/mergedData';
 import Thread from './Thread';
 import { deleteSinglePost } from '../api/postsData';
+import { useAuth } from '../utils/context/authContext';
 
-export default function PostCard({ postObj, onUpdate }) {
+export default function PostCard({ postObj, onUpdate, setMessageToEdit }) {
   const handleDelete = () => {
     if (window.confirm('Delete post?')) {
       deleteSinglePost(postObj.firebaseKey).then(() => onUpdate());
     }
   };
+  const { user } = useAuth();
+  const [show, setShow] = useState(false);
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
   const [messageNum, setMessageNum] = useState(0);
   const [messages, setMessages] = useState([]);
   const showMessageDetails = () => {
@@ -26,21 +33,34 @@ export default function PostCard({ postObj, onUpdate }) {
 
   return (
     <div>
-      <div className="panel panel-default postCard">
-        <div className="gutter">
-          <div className="userProfileHover">
-            <img width="30px" height="30px" src={postObj.posterPhoto} alt="user" className="user-icon" />
+      <div className="postCard">
+        <div className="userProfileHover">
+          <img width="30px" height="30px" src={postObj.posterPhoto} alt="user" className="user-icon" />
+        </div>
+        <div className="postContentAlign">
+          <div className="panel-heading">{postObj.posterName} {postObj.timeStamp}</div>
+          <div className="panel-body-content">{postObj.postContent}</div>
+          {/* <div className="panel-body-reactions">{postObj.reactions}</div> */}
+          <br />
+          <div className="panel-body-replies">
+            <Thread postObj={postObj} messageNum={messageNum} messages={messages} onUpdate={showMessageDetails} />
           </div>
         </div>
-        <div className="panel-heading">{postObj.posterName} {postObj.timeStamp}</div>
-        <div className="panel-body">{postObj.postContent}</div>
-        <div className="panel-body">{postObj.reactions}</div>
-        <div className="panel-body">
-          <Thread postObj={postObj} messageNum={messageNum} messages={messages} onUpdate={showMessageDetails} />
-          Replies
+        <div className="postBtnDiv">
+          <Button className={postObj.uid !== user.uid ? 'noShow' : 'morePostInfoBtn'} onClick={handleShow}>
+            ...
+          </Button>
+          <Modal className="postEditModal" show={show} onHide={handleClose}>
+            <Modal.Header className="modalHeader" closeButton>
+              <Button className="editMessage" onClick={() => setMessageToEdit(postObj)}>
+                Edit
+              </Button>
+              <Button className="deleteMessage" onClick={handleDelete}>
+                Delete
+              </Button>
+            </Modal.Header>
+          </Modal>
         </div>
-        <button type="button" className="editMessage">Edit Message</button>
-        <button type="button" onClick={handleDelete} className="deleteMessage">Delete Message</button>
       </div>
     </div>
   );
@@ -55,9 +75,11 @@ PostCard.propTypes = {
       timeStamp: PropTypes.string,
       postContent: PropTypes.string,
       reactions: PropTypes.string,
+      uid: PropTypes.string,
     },
   ),
   onUpdate: PropTypes.func.isRequired,
+  setMessageToEdit: PropTypes.func.isRequired,
 };
 
 PostCard.defaultProps = {

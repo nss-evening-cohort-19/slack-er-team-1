@@ -11,6 +11,7 @@ function Home() {
   const { user } = useAuth();
   const [posts, setPosts] = useState([]);
   const [filteredPosts, setFilteredPosts] = useState([]);
+  const [messageToEdit, setMessageToEdit] = useState();
 
   const getThePosts = () => {
     getAllPosts().then((postArray) => {
@@ -32,12 +33,12 @@ function Home() {
         <div className="text-center my-4 teamCardsDiv">
           <div className="d-flex flex-wrap postsCardContainer">
             {filteredPosts?.map((post) => (
-              <PostCard key={post?.firebaseKey} postObj={post} posts={posts} onUpdate={getThePosts} />
+              <PostCard key={post.firebaseKey} setMessageToEdit={setMessageToEdit} postObj={post} posts={posts} onUpdate={getThePosts} />
             ))}
           </div>
         </div>
       </div>
-      <TextInput key={user.firebaseKey} postsArray={posts} onUpdate={getThePosts} />
+      <TextInput key={user.firebaseKey} postsArray={posts} onUpdate={getThePosts} messageToEdit={messageToEdit} />
     </div>
   );
 }

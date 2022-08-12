@@ -8,11 +8,15 @@ const initialState = {
   postContent: '',
 };
 
-function TextInput({ postObj, channelObj, onUpdate }) {
-  const [formInput, setFormInput] = useState(initialState);
+function TextInput({
+  postObj, channelObj, onUpdate, messageToEdit,
+}) {
+  const [formInput, setFormInput] = useState({ postContent: messageToEdit.postContent || '' });
   const { user } = useAuth();
   useEffect(() => {
-    onUpdate();
+    setFormInput({ postContent: messageToEdit.postContent });
+  }, [messageToEdit]);
+  useEffect(() => {
     if (postObj.firebaseKey) setFormInput(postObj);
     getSingleChannel().then(channelObj);
   // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -28,8 +32,12 @@ function TextInput({ postObj, channelObj, onUpdate }) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (postObj.firebaseKey) {
-      updatePost(formInput).then(() => onUpdate());
+    if (messageToEdit.postContent !== '') {
+      const payload = {
+        ...messageToEdit,
+        ...formInput,
+      };
+      updatePost(payload.firebaseKey, payload).then(onUpdate);
       setFormInput(initialState);
     } else {
       const payload = {
@@ -76,12 +84,18 @@ TextInput.propTypes = {
   channelObj: PropTypes.shape({
     firebaseKey: PropTypes.string,
   }),
-  onUpdate: PropTypes.func.isRequired,
+  onUpdate: PropTypes.func,
+  messageToEdit: PropTypes.shape({
+    firebaseKey: PropTypes.string,
+    postContent: PropTypes.string,
+  }),
 };
 
 TextInput.defaultProps = {
   postObj: initialState,
   channelObj: initialState,
+  messageToEdit: initialState,
+  onUpdate: () => {},
 };
 
 export default TextInput;

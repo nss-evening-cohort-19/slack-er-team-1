@@ -16,7 +16,7 @@ const getPosts = (uid) => new Promise((resolve, reject) => {
 });
 
 const getAllPosts = () => new Promise((resolve, reject) => {
-  axios.get(`${dbUrl}/posts.json?`)
+  axios.get(`${dbUrl}/posts.json`)
     .then((response) => {
       if (response.data) {
         resolve(Object.values(response.data));
@@ -28,11 +28,11 @@ const getAllPosts = () => new Promise((resolve, reject) => {
 });
 
 const createPost = (postObj) => new Promise((resolve, reject) => {
-  axios.post(`${dbUrl}/posts.json?`, postObj)
+  axios.post(`${dbUrl}/posts.json`, postObj)
     .then((response) => {
       const payload = { firebaseKey: response.data.name };
       axios.patch(`${dbUrl}/posts/${response.data.name}.json`, payload).then(() => {
-        getPosts(postObj.uid).then((userArray) => resolve(userArray));
+        getPosts(payload.uid).then((userArray) => resolve(userArray));
       });
     }).catch((error) => reject(error));
 });
@@ -49,12 +49,11 @@ const deleteSinglePost = (firebaseKey) => new Promise((resolve, reject) => {
     .catch((error) => reject(error));
 });
 
-const updatePost = (postObj) => new Promise((resolve, reject) => {
-  axios.patch(`${dbUrl}/posts/${postObj.firebaseKey}.json`, postObj)
-    .then(() => getPosts(postObj.uid)).then(resolve)
+const updatePost = (firebaseKey, payload) => new Promise((resolve, reject) => {
+  axios.patch(`${dbUrl}/posts/${firebaseKey}.json`, payload)
+    .then(() => getPosts(payload.uid)).then(resolve)
     .catch(reject);
 });
-
 const getPostsByChannel = (postObj) => new Promise((resolve, reject) => {
   axios.patch(`${dbUrl}/posts/${postObj.channelId}.json`, postObj)
     .then(() => getPosts(postObj.uid)).then(resolve)
