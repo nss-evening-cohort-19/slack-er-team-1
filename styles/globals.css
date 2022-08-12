@@ -394,9 +394,25 @@ ul {
 .threadStyle {
   background-color: #222529;
   color: #cbcccd;
-  display: flex;
 }
 
-.messageContainer {
-  flex-direction: row;
+.threadReplyBtn {
+  background-color: transparent;
+  border: none;
+}
+
+.threadReplyBtn:hover {
+  background-color: transparent;
+  border: none;
+}
+
+.threadReplyBtn:active {
+  background-color: transparent;
+  border: none;
+}
+
+.messageContent {
+  background-color: #222529;
+  width: 100%;
+  color: #cbcccd;
 }
