@@ -16,7 +16,7 @@ const getPosts = (uid) => new Promise((resolve, reject) => {
 });
 
 const getAllPosts = () => new Promise((resolve, reject) => {
-  axios.get(`${dbUrl}/posts.json?`)
+  axios.get(`${dbUrl}/posts.json`)
     .then((response) => {
       if (response.data) {
         resolve(Object.values(response.data));
@@ -28,7 +28,7 @@ const getAllPosts = () => new Promise((resolve, reject) => {
 });
 
 const createPost = (postObj) => new Promise((resolve, reject) => {
-  axios.post(`${dbUrl}/posts.json?`, postObj)
+  axios.post(`${dbUrl}/posts.json`, postObj)
     .then((response) => {
       const payload = { firebaseKey: response.data.name };
       axios.patch(`${dbUrl}/posts/${response.data.name}.json`, payload).then(() => {
