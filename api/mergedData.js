@@ -1,3 +1,4 @@
+import { createChannel, getSingleChannel } from './channelData';
 import { getMessagesByPost } from './messagesData';
 import { getSinglePost } from './postsData';
 
@@ -10,4 +11,15 @@ const getMessagesOnPost = (postFirebaseKey) => new Promise((resolve, reject) => 
     }).catch((error) => reject(error));
 });
 
-export default getMessagesOnPost;
+// JOIN A CHANNEL
+const joiningChannel = (channelFbKey) => new Promise((resolve, reject) => {
+  getSingleChannel(channelFbKey).then((singChannelObj) => {
+    createChannel(singChannelObj).then(resolve);
+  })
+    .catch(reject);
+});
+
+export {
+  getMessagesOnPost,
+  joiningChannel,
+};

@@ -55,6 +55,15 @@ const createChannel = (newChannelObj) => new Promise((resolve, reject) => {
     .catch(reject);
 });
 
+// UPDATE CHANNEL
+const updateUidOfChannel = (userUid, channelObj) => new Promise((resolve, reject) => {
+  const payload = { uid: userUid };
+  axios.patch(`${dbUrl}/channels/${channelObj?.firebaseKey}.json`, payload).then(() => {
+    getChannelsByUid(channelObj?.uid).then((channelArray) => resolve(channelArray));
+  })
+    .catch(reject);
+});
+
 // DELETE CHANNEL
 const deleteChannel = (firebaseKey) => new Promise((resolve, reject) => {
   axios.delete(`${dbUrl}/channels/${firebaseKey}.json`)
@@ -67,5 +76,6 @@ export {
   getChannelsByUid,
   getSingleChannel,
   createChannel,
+  updateUidOfChannel,
   deleteChannel,
 };
