@@ -7,7 +7,6 @@ import { createMessages } from '../api/messagesData';
 import { useAuth } from '../utils/context/authContext';
 
 const initialState = {
-  firebaseKey: '',
   messageContent: '',
 };
 
