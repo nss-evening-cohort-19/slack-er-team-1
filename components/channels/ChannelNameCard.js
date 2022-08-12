@@ -27,7 +27,7 @@ function ChannelNameCard() {
   return (
     <div>
       <ul>
-        {allChannels?.map((channel) => <li key={channel.firebaseKey}>{channel.channelName} <button type="button" className={user.uid === channel.uid ? 'btn btn-outline-dark' : 'btn btn-outline-success'} onClick={user.uid === channel.uid ? deleteTheJoinObj : handleSubmit}>{user.uid === channel.uid ? 'Leave' : 'Join'}</button></li>)}
+        {allChannels?.map((channel) => <li key={channel.firebaseKey}>#{channel.channelName} <button type="button" className={user.uid === channel.uid ? 'btn btn-outline-dark' : 'btn btn-outline-success'} onClick={user.uid === channel.uid ? deleteTheJoinObj : handleSubmit}>{user.uid === channel.uid ? 'Leave' : 'Join'}</button></li>)}
       </ul>
     </div>
   );

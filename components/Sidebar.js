@@ -35,7 +35,7 @@ export default function Sidebar() {
           </button>
           <ul className="dropdown-menu">
             {channelList.map((channel) => (
-              <li key={channel.firebaseKey}>
+              <li key={channel.firebaseKey}>#
                 <Link className="dropdown-item" href={`/channel/${channel.firebaseKey}`}>
                   {channel.channelName}
                 </Link>
