@@ -1,6 +1,7 @@
 /* eslint-disable @next/next/no-img-element */
 import React, { useEffect, useState } from 'react';
 import Link from 'next/link';
+import Accordion from 'react-bootstrap/Accordion';
 import { useAuth } from '../utils/context/authContext';
 import { getChannelsByUid } from '../api/channelData';
 
@@ -13,8 +14,8 @@ export default function Sidebar() {
   }, [user.uid]);
 
   return (
-    <div className="offcanvas offcanvas-start show sidebarStyle" data-bs-backdrop="static" tabIndex="-1" id="staticBackdrop" aria-labelledby="staticBackdropLabel">
-      <div className="offcanvas-header">
+    <div className="sidebarStyle" data-bs-backdrop="static" tabIndex="-1" id="staticBackdrop" aria-labelledby="staticBackdropLabel">
+      <div className="sidebarLogoName">
         <img src="https://coursereport-s3-production.global.ssl.fastly.net/uploads/school/logo/28/original/nss-logo-compact.png" alt="NSS logo" className="logo" />
         <h4 className="offcanvas-title" id="staticBackdropLabel">
           <b>Nashville Software Shool</b>
@@ -39,39 +40,41 @@ export default function Sidebar() {
           More
         </div>
         <hr />
-        <div className="dropdown">
-          <button className="btn btn-dark btn-sm dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-            Channels
-          </button>
-          <ul className="dropdown-menu">
-            {channelList.map((channel) => (
-              <li key={channel.firebaseKey}>
-                <Link className="dropdown-item" href={`/channel/${channel.firebaseKey}`}>
-                  {channel.channelName}
-                </Link>
-              </li>
-            ))}
-            <li>
-              <Link className="dropdown-item" href="/channel/new">
-                + Add channel
-              </Link>
-            </li>
-            <li>
-              <Link className="dropdown-item" href="/channel/browseChannels">
-                Browse Channels
-              </Link>
-            </li>
-          </ul>
+        <div className="bottomSidebar">
+          <Accordion className="accordionChannels bg-dark text-light" defaultActiveKey="0">
+            <Accordion.Item className="accordionChannels text-light" eventKey="1">
+              <Accordion.Header style={{ color: '#9b9a9d' }} className="accordionChannels text-light">Channels</Accordion.Header>
+              <Accordion.Body className="accordionChannels text-light">
+                <ul className="accordionStyle">
+                  {channelList.map((channel) => (
+                    <li className="listItemsChannels" key={channel.firebaseKey}>
+                      <Link style={{ color: '#9b9a9d' }} className="accordion-item" href={`/channel/${channel.firebaseKey}`}>
+                        {channel.channelName}
+                      </Link>
+                    </li>
+                  ))}
+                  <li>
+                    <Link style={{ color: '#9b9a9d' }} className="accordion-item" href="/channel/new">
+                      + Add channel
+                    </Link>
+                  </li>
+                  <li>
+                    <Link style={{ color: '#9b9a9d' }} className="accordion-item" href="/channel/browseChannels">
+                      Browse Channels
+                    </Link>
+                  </li>
+                </ul>
+              </Accordion.Body>
+            </Accordion.Item>
+          </Accordion>
+          <br />
+          <div>Direct messages</div>
+          <div>Slack-er Bot</div>
+          <div>Message 1</div>
+          <div>Message 2</div>
+          <div>Message 3</div>
+          <div>Add teammates</div>
         </div>
-        <br />
-        <button className="btn btn-dark btn-sm dropdown-toggle" type="button">
-          Direct Messages
-        </button>
-        <div># Slack-er Bot</div>
-        <div># Message 1</div>
-        <div># Message 2</div>
-        <div># Message 3</div>
-        <div>+ Add teammates</div>
       </div>
     </div>
   );

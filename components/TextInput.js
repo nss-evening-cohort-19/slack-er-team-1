@@ -59,17 +59,33 @@ function TextInput({
   };
 
   return (
-    <div className="mainPostContainer">
-      <form className="commentInputContainer" onSubmit={handleSubmit}>
-        <input required type="text" name="postContent" value={formInput?.postContent} className="form-control postContentDiv" placeholder="Message Channel" onChange={handleChange} />
-        <div className="postSubmitToolbar">
-          <div className="leftToolbar" />
-          <button type="submit" className="submitPostBtn">
-            <img src="https://cdn-icons-png.flaticon.com/512/3884/3884623.png" alt="paper-plane" className="icon" />
-          </button>
+  // <div className="mainPostContainer">
+  //   <form className="commentInputContainer" onSubmit={handleSubmit}>
+  //     <input required type="text" name="postContent" value={formInput?.postContent} className="form-control postContentDiv" placeholder="Message Channel" onChange={handleChange} />
+  //     <div className="postSubmitToolbar">
+  //       <div className="leftToolbar" />
+  //       <button type="submit" className="submitPostBtn">
+  //         <img src="https://cdn-icons-png.flaticon.com/512/3884/3884623.png" alt="paper-plane" className="icon" />
+  //       </button>
+
+    <>
+      <div>
+        <div className="mainPostContainer">
+          <form className="commentInputContainer" onSubmit={handleSubmit}>
+            <input required type="text" name="postContent" value={formInput?.postContent} className="form-control postContentDiv" placeholder="Message Channel" onChange={handleChange} />
+            <div className="postSubmitToolbar">
+              <div className="leftToolbar" />
+              <button type="submit" className="submitPostBtn">
+                <img src="https://cdn-icons-png.flaticon.com/512/3884/3884623.png" alt="paper-plane" className="icon" />
+              </button>
+            </div>
+          </form>
         </div>
-      </form>
-    </div>
+      </div>
+      <div>
+        <div className="blockPosts" />
+      </div>
+    </>
   );
 }
 
