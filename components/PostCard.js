@@ -36,6 +36,11 @@ export default function PostCard({ postObj, onUpdate, setMessageToEdit }) {
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
+  const clickHandler = () => {
+    setMessageToEdit(postObj);
+    handleClose();
+  };
+
   return (
     <div>
       <div className="postCard">
@@ -44,6 +49,7 @@ export default function PostCard({ postObj, onUpdate, setMessageToEdit }) {
         </div>
         <div className="postContentAlign">
           <div className="panel-heading">{postObj.posterName} {postObj.timeStamp}</div>
+          <br />
           <div className="panel-body-content">{postObj.postContent}</div>
           {/* <div className="panel-body-reactions">{postObj.reactions}</div> */}
           <br />
@@ -57,7 +63,7 @@ export default function PostCard({ postObj, onUpdate, setMessageToEdit }) {
           </Button>
           <Modal className="postEditModal" show={show} onHide={handleClose}>
             <Modal.Header className="modalHeader" closeButton>
-              <Button className="editMessage" onClick={() => setMessageToEdit(postObj)}>
+              <Button className="editMessage" onClick={clickHandler}>
                 Edit
               </Button>
               <Button className="deleteMessage" onClick={handleDelete}>
