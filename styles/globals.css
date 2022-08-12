@@ -4,13 +4,13 @@
 html,
 body {
   padding: 0;
-  margin: 0;
   font-family: 'Lato', sans-serif;
   font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
     Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
-    margin: 0 0 0 129px;
-    width: 89.7%;
+    width: 89%;
   margin-bottom: 80px;
+  margin-left: 155px;
+  display: flex;
 }
 
 a {
@@ -38,13 +38,18 @@ body {
   display: flex !important;
   flex-direction: column;
   width: 100%;
+  overflow: hidden;
+  position: relative;
+  flex-basis: auto;
+  flex-grow: 1;
 }
 
 .postCardsDiv {
   display: flex;
   flex-direction: row;
   width: 100%;
-  margin-left: 13px;
+  margin-left: -60px;
+  overflow: hidden;
 }
 
 .postCard {
@@ -90,7 +95,7 @@ body {
 .messagesCardContainer {
   flex-flow: row wrap;
   font-family: 'Lato', sans-serif;
-  margin-left: 10px;
+  margin-left: 5px;
 }
 
 .morePostInfoBtn {
@@ -101,6 +106,10 @@ body {
   height: 0;
   line-height: 0;
   margin-bottom: 10px;
+}
+
+.morePostInfoBtn:hover {
+  background-color: transparent;
 }
 
 .editMessage {
@@ -128,6 +137,7 @@ body {
   max-width: 260px;
   background-color: #19171d;
   color: #9b9a9d;
+  margin-right: 10px;
 }
 
 .offcanvas {
@@ -152,14 +162,14 @@ body {
 .mainPostContainer {
   display: flex;
   flex-direction: row;
-  margin-left: 10px;
+  margin-left: 5px;
   color: #cfd0d1;
 }
 
 .commentInputContainer {
     z-index: 200;
     position: fixed;
-    Width: 79%;
+    Width: 100%;
     bottom: 0;
     border-radius: 6px !important;
     border-style: solid !important;
@@ -258,10 +268,15 @@ body {
 
 .panel-body-content {
   float: left;
+  text-align: left;
 }
 
 .postContentAlign {
   margin-left: 10px;
+}
+
+.panel-heading {
+  float: left;
 }
 
 .panel-body-replies {
@@ -280,4 +295,8 @@ body {
   background-color: transparent;
   border-bottom: 1px solid;
   color: #379bd1;
+}
+
+.navbar {
+  margin-left: 50px;
 }
