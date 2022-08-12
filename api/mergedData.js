@@ -16,11 +16,11 @@ const getMessagesOnPost = (postFirebaseKey) => new Promise((resolve, reject) => 
 });
 
 // JOIN A CHANNEL
-const joiningChannel = (channelFbKey, userUid) => new Promise((resolve, reject) => {
-  getSingleChannel(channelFbKey).then((singChannelObj) => {
-    createChannel(singChannelObj).then((channelObj) => {
-      axios.patch(`${dbUrl}/channels/${channelObj.firebaseKey}.json`, userUid).then(() => {
-        getChannelsByUid(channelObj.uid).then((channelArray) => resolve(channelArray));
+const joiningChannel = (channelFbKey, userId) => new Promise((resolve, reject) => {
+  getSingleChannel(channelFbKey).then((response) => {
+    axios.patch(`${dbUrl}/channels/${response.firebaseKey}.json`, userId).then((singChannelObj) => {
+      createChannel(singChannelObj).then(() => {
+        getChannelsByUid(response.uid).then((channelArray) => resolve(channelArray));
       });
     });
   })

@@ -22,12 +22,10 @@ function ChannelNameCard() {
       channelId: e.target.id,
       userId: user.uid,
     };
-    const newUid = {
-      uid: user.uid,
-    };
 
-    createJoinChannel(payload);
-    joiningChannel(payload.channelId, newUid);
+    createJoinChannel(payload).then((newChannelObj) => {
+      joiningChannel(newChannelObj);
+    });
   };
 
   return (
