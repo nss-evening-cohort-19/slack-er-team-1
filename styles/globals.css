@@ -52,6 +52,8 @@ body {
   font-family: 'Lato', sans-serif;
   flex-direction: row;
   width: 100%;
+  display: flex;
+  flex-direction: row;
 }
 
 .postCard:hover {
@@ -90,14 +92,24 @@ body {
   margin-left: 10px;
 }
 
-.editMessage {
+.morePostInfoBtn {
   background-color: #1b1d21;
   color: white;
   border: none;
 }
 
+.morePostInfoBtn:hover {
+  background-color: #232529;
+}
+
+.editMessage {
+  background-color: #222529;
+  color: white;
+  border: none;
+}
+
 .deleteMessage {
-  background-color: #1b1d21;
+  background-color: #222529;
   color: white;
   border: none;
 }
@@ -153,8 +165,6 @@ body {
     border-width: 1px !important;
     border-color: #565856 !important;
     color: #cfd0d1;
-    display: flex;
-    min-width: none;
 }
 
 
@@ -182,7 +192,6 @@ body {
 }
 
 .postContentDiv {
-  background-color: #232529;
   height: 100px;
   border: none !important;
   color: #cfd0d1 !important;
@@ -196,6 +205,10 @@ body {
   background-color: #232529 !important;
   height: 100px;
   border: none !important;
+}
+
+.postContentDiv:hover {
+  background-color: #232529;
 }
 
 .postSubmitToolbar {
@@ -225,4 +238,19 @@ body {
 
 .noShow{
   display: none;
+}
+ 
+.postOptions {
+  background-color: #1b1d21;
+  border: none;
+  color: #cfd0d1;
+  font-size:xx-large
+}
+
+.moadlBody {
+  background-color: #222529;
+}
+
+.modalHeader {
+  background-color: #222529;
 }
