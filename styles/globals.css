@@ -153,6 +153,8 @@ body {
     border-width: 1px !important;
     border-color: #565856 !important;
     color: #cfd0d1;
+    display: flex;
+    min-width: none;
 }
 
 
@@ -176,6 +178,7 @@ body {
   color: #cfd0d1;
   width: 5%;
   align-self: flex-end;
+  justify-self: flex-end;
 }
 
 .postContentDiv {
