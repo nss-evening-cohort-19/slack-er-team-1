@@ -43,11 +43,11 @@ export default function PostCard({ postObj, onUpdate, setMessageToEdit }) {
         </div>
         <div className="postContentAlign">
           <div className="panel-heading">{postObj.posterName} {postObj.timeStamp}</div>
-          <div className="panel-body">{postObj.postContent}</div>
-          <div className="panel-body">{postObj.reactions}</div>
-          <div className="panel-body">
+          <div className="panel-body-content">{postObj.postContent}</div>
+          {/* <div className="panel-body-reactions">{postObj.reactions}</div> */}
+          <br />
+          <div className="panel-body-replies">
             <Thread postObj={postObj} messageNum={messageNum} messages={messages} onUpdate={showMessageDetails} />
-            Replies
           </div>
         </div>
         <div className="postBtnDiv">

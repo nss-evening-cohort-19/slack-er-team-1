@@ -21,8 +21,8 @@ export default function Thread({
   }, []);
   return (
     <>
-      <Button onClick={toggleShow}>
-        {messageNum}
+      <Button className="repliesNumBtn" onClick={toggleShow}>
+        {messageNum} replies
       </Button>
       <Offcanvas show={show} placement="end" onHide={handleClose} scroll="true">
         <Offcanvas.Header closeButton>
