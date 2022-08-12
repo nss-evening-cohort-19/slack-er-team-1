@@ -2,13 +2,16 @@
 import React, { useEffect, useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
+import { Button } from 'react-bootstrap';
 import PropTypes from 'prop-types';
 import getMessagesOnPost from '../api/mergedData';
 import Thread from './Thread';
 import { deleteSinglePost } from '../api/postsData';
 import { useAuth } from '../utils/context/authContext';
+// import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 export default function PostCard({ postObj, onUpdate, setMessageToEdit }) {
+  const { user } = useAuth();
   const handleDelete = () => {
     if (window.confirm('Delete post?')) {
       deleteSinglePost(postObj.firebaseKey).then(() => onUpdate());
@@ -65,6 +68,7 @@ export default function PostCard({ postObj, onUpdate, setMessageToEdit }) {
             </Modal.Header>
           </Modal>
         </div>
+
       </div>
     </div>
   );
