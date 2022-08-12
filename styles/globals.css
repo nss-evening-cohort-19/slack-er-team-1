@@ -1,6 +1,6 @@
 @import 'bootstrap/dist/css/bootstrap.css';
-@import url('https://fonts.googleapis.com/css2?family=Lato:wght@300&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Lato:wght@700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@300;700&display=swap');
+
 
 html,
 body {
@@ -158,11 +158,14 @@ body {
     flex-shrink: 1;
     z-index: 300;
     position: fixed;
+    Width: 76%;
+    bottom: 0;
     border-radius: 6px !important;
     border-style: solid !important;
     border-width: 1px !important;
     border-color: #565856 !important;
     color: #cfd0d1;
+    margin-bottom: 1%;
     width: 84%;
     left: 284px;
 }
@@ -181,8 +184,7 @@ body {
 }
 .submitPostBtn {
   background-color: #232529;
-  color: #cfd0d1;
-  width: 5%;
+  border: none;
   align-self: flex-end;
   justify-self: flex-end;
   position: relative;
@@ -251,6 +253,13 @@ body {
 .noShow{
   display: none;
 }
+
+
+.icon {
+  height: 20px;
+  padding: 2px;
+}
+
  
 .postOptions {
   background-color: #1b1d21;
@@ -298,6 +307,12 @@ body {
   color: #379bd1;
 }
 
+.profileDropdown {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 5px;
+}
 #__next {
   width: 100%;
 }

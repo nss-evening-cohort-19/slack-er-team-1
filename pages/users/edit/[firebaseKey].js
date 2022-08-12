@@ -2,6 +2,7 @@ import { useRouter } from 'next/router';
 import React, { useEffect, useState } from 'react';
 import { getSingleUser } from '../../../api/userData';
 import CreateUserForm from '../../../components/CreateUserForm';
+import Sidebar from '../../../components/Sidebar';
 
 export default function EditUser() {
   const [editUser, setEditUser] = useState({});
@@ -13,6 +14,9 @@ export default function EditUser() {
     getSingleUser(firebaseKey).then(setEditUser);
   }, [firebaseKey]);
   return (
-    <CreateUserForm obj={editUser} />
+    <>
+      <Sidebar />
+      <CreateUserForm obj={editUser} />
+    </>
   );
 }

@@ -12,7 +12,7 @@ const initialState = {
   imageUrl: '',
 };
 
-function CreateUserForm({ obj }) {
+function CreateUserForm({ obj, className }) {
   const [formInput, setFormInput] = useState(initialState);
   const [, setProfile] = useState([]);
   const router = useRouter();
@@ -59,7 +59,7 @@ function CreateUserForm({ obj }) {
     }
   };
   return (
-    <>
+    <div className={className}>
       <form onSubmit={handleSubmit}>
         <input required type="text" name="tagline" value={formInput.tagline} className="form-control" placeholder="What's your tagline?" onChange={handleChange} />
         <input required type="tel" name="phone" value={formInput.phone} className="form-control" placeholder="Phone Number" onChange={handleChange} />
@@ -67,7 +67,7 @@ function CreateUserForm({ obj }) {
           Submit
         </button>
       </form>
-    </>
+    </div>
   );
 }
 
@@ -82,10 +82,12 @@ CreateUserForm.propTypes = {
     lastLogin: PropTypes.string,
     timeZone: PropTypes.string,
   }),
+  className: PropTypes.string,
 };
 
 CreateUserForm.defaultProps = {
   obj: initialState,
+  className: '',
 };
 
 export default CreateUserForm;
