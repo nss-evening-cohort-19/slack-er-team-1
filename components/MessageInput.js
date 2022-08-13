@@ -53,9 +53,10 @@ export default function MessageInput({ postObj, onUpdate, replyToEdit }) {
   return (
     <Form onSubmit={handleSubmit}>
       <InputGroup>
-        <Form.Control type="text" name="messageContent" onChange={handleChange} value={formInput?.messageContent} placeholder="Reply..." as="textarea" aria-label="With textarea" />
+        <Form.Control type="text" name="messageContent" class="messageContent" onChange={handleChange} value={formInput.messageContent} placeholder="Reply..." as="textarea" aria-label="With textarea" />
+
       </InputGroup>
-      <Button type="submit" onClick={handleSubmit}>Reply</Button>
+      <Button className="threadReplyBtn" type="submit" onClick={handleSubmit}>Reply</Button>
     </Form>
   );
 }
