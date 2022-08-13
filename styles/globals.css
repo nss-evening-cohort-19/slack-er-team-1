@@ -541,3 +541,18 @@ color:#9b9a9d;
 #__next > div > div > div > div.container-fluid.post-container > div:nth-child(1) > div > form {
   width: 80%;
 }
+
+.all-channels-page {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  flex-wrap: wrap;
+  align-content: space-around;
+  background-color: #1b1d21;
+  color:#9b9a9d;
+}
+
+.channel-form {
+  display: flex;
+  justify-content: center;
+}
