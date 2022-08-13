@@ -2,6 +2,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Lato:wght@300&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Lato:wght@700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@300;700&display=swap');
+
 
 html,
 body {
@@ -152,6 +154,11 @@ body {
   z-index: 20;
   left: 0;
   padding-left: 20px;
+  border-style: solid;
+  border-width: 0.5px;
+  border-radius: 3px;
+  border-color: #343739;
+  border-top: 0px;
 }
 
 .post-container {
@@ -176,11 +183,14 @@ body {
     flex-shrink: 1;
     z-index: 300;
     position: fixed;
+    Width: 76%;
+    bottom: 0;
     border-radius: 6px !important;
     border-style: solid !important;
     border-width: 1px !important;
     border-color: #565856 !important;
     color: #cfd0d1;
+    margin-bottom: 1%;
     width: 84%;
     left: 284px;
 }
@@ -202,8 +212,7 @@ body {
 
 .submitPostBtn {
   background-color: #232529;
-  color: #cfd0d1;
-  width: 5%;
+  border: none;
   align-self: flex-end;
   justify-self: flex-end;
   position: relative;
@@ -253,6 +262,7 @@ body {
 
 .profile {
   color: white;
+  margin-top: 20px;
 }
 
 .logo {
@@ -263,6 +273,11 @@ body {
 
 .noShow{
   display: none;
+}
+
+.icon {
+  height: 20px;
+  padding: 2px;
 }
  
 .postOptions {
@@ -311,6 +326,18 @@ body {
   color: #379bd1;
 }
 
+.profileDropdown {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 5px;
+  background-color: #232529;
+  color: #cfd0d1;
+  border-style: solid;
+  border-width: 0.5px;
+  border-radius: 3px;
+  border-color: #343739;
+}
 #__next {
   width: 100%;
 }
@@ -327,9 +354,22 @@ body {
 }
 
 .navbar {
-  position: fixed;
-  z-index: 300;
+  /* text-align: left; */
   width: 100%;
+  background-color: #19171d;
+  color: #9b9a9d;
+  /* position: fixed; */
+  height: auto;
+  z-index: 300;
+  left: 0;
+  padding-left: 20px;
+  border-style: solid;
+  border-width: 0.5px;
+  border-radius: 3px;
+  border-color: #343739;
+  border-top: 0px;
+  display: flex;
+  justify-content: space-between;
 }
 
 .sidebarLogoName {
@@ -415,4 +455,57 @@ ul {
   background-color: #222529;
   width: 100%;
   color: #cbcccd;
+=======
+.profilepageDiv {
+  display: flex;
+  flex-direction: column;
+  width: 70%;
+}
+
+.mainProfilePage {
+  margin-left: 300px;
+  margin-top: 60px;
+}
+
+.profileSidebar {
+  margin-right: 200px;
+}
+
+.profileBtn {
+  background-color: none;
+  color: #cfd0d1;
+}
+
+.signOutBtn {
+  background-color: none;
+  color: #cfd0d1;
+}
+
+.profileDropdownBottomDiv {
+  background-color: #242529;
+  text-align: center;
+}
+
+.threadOffcanvas {
+  border-style: solid;
+  border-width: 0.5px;
+  border-radius: 3px;
+  border-color: #343739;
+}
+
+.navbarContents {
+  display: flex;
+}
+
+.update-user {
+  display: flex;
+  justify-content: center;
+}
+
+form {
+  width: 60%;
+}
+
+a {
+color:#9b9a9d;
 }

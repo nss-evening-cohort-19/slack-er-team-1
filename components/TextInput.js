@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import { useAuth } from '../utils/context/authContext';
@@ -58,6 +59,15 @@ function TextInput({
   };
 
   return (
+  // <div className="mainPostContainer">
+  //   <form className="commentInputContainer" onSubmit={handleSubmit}>
+  //     <input required type="text" name="postContent" value={formInput?.postContent} className="form-control postContentDiv" placeholder="Message Channel" onChange={handleChange} />
+  //     <div className="postSubmitToolbar">
+  //       <div className="leftToolbar" />
+  //       <button type="submit" className="submitPostBtn">
+  //         <img src="https://cdn-icons-png.flaticon.com/512/3884/3884623.png" alt="paper-plane" className="icon" />
+  //       </button>
+
     <>
       <div>
         <div className="mainPostContainer">
@@ -66,7 +76,7 @@ function TextInput({
             <div className="postSubmitToolbar">
               <div className="leftToolbar" />
               <button type="submit" className="submitPostBtn">
-                Send
+                <img src="https://cdn-icons-png.flaticon.com/512/3884/3884623.png" alt="paper-plane" className="icon" />
               </button>
             </div>
           </form>
