@@ -5,14 +5,17 @@ import Accordion from 'react-bootstrap/Accordion';
 import { BsChatText } from 'react-icons/bs';
 import { FaComments, FaAt, FaEllipsisV } from 'react-icons/fa';
 import { useAuth } from '../utils/context/authContext';
-import { getChannelsByUid } from '../api/channelData';
+import { joiningChannel } from '../api/mergedData';
 
 export default function Sidebar() {
   const [channelList, setChannelList] = useState([]);
   const { user } = useAuth();
 
   useEffect(() => {
-    getChannelsByUid(user.uid).then(setChannelList);
+    joiningChannel(user.uid).then((response) => {
+      console.warn(response, 'Right Here');
+      setChannelList(response);
+    });
   }, [user.uid]);
 
   return (
