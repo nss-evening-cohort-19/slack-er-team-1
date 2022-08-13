@@ -4,7 +4,7 @@ import Sidebar from '../../components/Sidebar';
 
 export default function NewChannel() {
   return (
-    <div>
+    <div className="channel-form">
       <Sidebar />
       <ChannelForm />
     </div>
