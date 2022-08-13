@@ -515,3 +515,18 @@ form {
 a {
 color:#9b9a9d;
 }
+
+.all-channels-page {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  flex-wrap: wrap;
+  align-content: space-around;
+  background-color: #1b1d21;
+  color:#9b9a9d
+}
+
+.channel-form {
+  display: flex;
+  justify-content: center;
+}
