@@ -1,16 +1,27 @@
 @import 'bootstrap/dist/css/bootstrap.css';
-@import url('https://fonts.googleapis.com/css2?family=Lato:wght@300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@300;700&display=swap');
+
 
 html,
 body {
-  padding: 0;
-  margin: 0;
+  padding: 0 !important;
   font-family: 'Lato', sans-serif;
   font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
     Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
-    margin: 0 0 0 129px;
-    width: 89.7%;
-  margin-bottom: 80px;
+  width: 100% !important;
+  display: flex !important;
+}
+
+.mainBody {
+  display: flex;
+  width: 100%; 
+  margin-top: 65px;
+}
+
+.pageContent {
+  display: flex;
+  flex-direction: row;
+  margin-top: 30px;
 }
 
 a {
@@ -35,16 +46,19 @@ body {
 }
 
 .postsCardContainer {
-  display: flex !important;
+  display: flex;
   flex-direction: column;
   width: 100%;
+  position: relative;
+  margin-left: 275px;
+  margin-bottom: 500px;
 }
 
 .postCardsDiv {
   display: flex;
   flex-direction: row;
   width: 100%;
-  margin-left: 13px;
+  position: relative;
 }
 
 .postCard {
@@ -52,6 +66,9 @@ body {
   font-family: 'Lato', sans-serif;
   flex-direction: row;
   width: 100%;
+  display: flex;
+  margin-bottom: 10px;
+  position: relative;
 }
 
 .postCard:hover {
@@ -85,19 +102,33 @@ body {
 }
 
 .messagesCardContainer {
-  flex-flow: row wrap;
+  flex-flow: row;
   font-family: 'Lato', sans-serif;
-  margin-left: 10px;
+  margin-left: 5px;
+}
+
+.morePostInfoBtn {
+  background-color: transparent;
+  color: white;
+  border: none;
+  text-align: center;
+  height: 0;
+  line-height: 0;
+  margin-bottom: 10px;
+}
+
+.morePostInfoBtn:hover {
+  background-color: transparent;
 }
 
 .editMessage {
-  background-color: #1b1d21;
+  background-color: #222529;
   color: white;
   border: none;
 }
 
 .deleteMessage {
-  background-color: #1b1d21;
+  background-color: #222529;
   color: white;
   border: none;
 }
@@ -112,23 +143,22 @@ body {
 
 .sidebarStyle {
   text-align: left;
-  max-width: 260px;
+  width: 250px;
   background-color: #19171d;
   color: #9b9a9d;
-}
-
-.offcanvas {
-  overflow: auto;
-}
-
-.commentInput {
-  height: 142px;
-  width: 900px;
+  position: fixed;
+  height: 100%;
+  z-index: 20;
+  left: 0;
+  padding-left: 20px;
+  border-style: solid;
+  border-width: 0.5px;
+  border-radius: 3px;
+  border-color: #343739;
+  border-top: 0px;
 }
 
 .post-container {
-  overflow-x: hidden;
-  overflow-y: auto;
   height: 100vh;
 }
 
@@ -138,23 +168,29 @@ body {
 
 .mainPostContainer {
   display: flex;
-  flex-direction: row;
-  margin-left: 10px;
   color: #cfd0d1;
+  position: fixed;
+  bottom: 150px;
+  width: 80%;
+  margin-left: 130px;
 }
 
 .commentInputContainer {
-    z-index: 200;
+    flex-wrap: wrap;
+    flex-shrink: 1;
+    z-index: 300;
     position: fixed;
-    Width: 79%;
+    Width: 76%;
     bottom: 0;
     border-radius: 6px !important;
     border-style: solid !important;
     border-width: 1px !important;
     border-color: #565856 !important;
     color: #cfd0d1;
+    margin-bottom: 1%;
+    width: 84%;
+    left: 284px;
 }
-
 
 .commentInputContainer:focus {
   border: none !important;
@@ -173,13 +209,13 @@ body {
 
 .submitPostBtn {
   background-color: #232529;
-  color: #cfd0d1;
-  width: 5%;
+  border: none;
   align-self: flex-end;
+  justify-self: flex-end;
+  position: relative;
 }
 
 .postContentDiv {
-  background-color: #232529;
   height: 100px;
   border: none !important;
   color: #cfd0d1 !important;
@@ -193,6 +229,15 @@ body {
   background-color: #232529 !important;
   height: 100px;
   border: none !important;
+}
+
+.postContentDiv:active{
+  background-color: #232529 !important;
+  height: 100px;
+  border: none !important;
+}
+.postContentDiv:hover {
+  background-color: #232529;
 }
 
 .postSubmitToolbar {
@@ -214,12 +259,225 @@ body {
 
 .profile {
   color: white;
+  margin-top: 20px;
 }
 
 .logo {
   height: 50px;
+  margin-right: 15px;
+  margin-top: 10px;
 }
 
 .noShow{
   display: none;
+}
+
+.icon {
+  height: 20px;
+  padding: 2px;
+}
+ 
+.postOptions {
+  background-color: #1b1d21;
+  border: none;
+  color: #cfd0d1;
+  font-size:xx-large
+}
+
+.moadlBody {
+  background-color: #222529;
+}
+
+.modalHeader {
+  background-color: #222529;
+}
+
+.panel-body-content {
+  float: left;
+  text-align: left;
+}
+
+.postContentAlign {
+  margin-left: 10px;
+}
+
+.panel-heading {
+  float: left;
+}
+
+.panel-body-replies {
+  float: left;
+}
+
+.repliesNumBtn {
+  background-color: transparent;
+  border: none;
+  color: #379bd1;
+  padding: 0;
+  border-radius: 0px;
+}
+
+.repliesNumBtn:hover {
+  background-color: transparent;
+  border-bottom: 1px solid;
+  color: #379bd1;
+}
+
+.profileDropdown {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 5px;
+  background-color: #232529;
+  color: #cfd0d1;
+  border-style: solid;
+  border-width: 0.5px;
+  border-radius: 3px;
+  border-color: #343739;
+}
+#__next {
+  width: 100%;
+}
+
+.blockPosts {
+  background-color: #1b1d21;
+  position: fixed;
+  height: 18px;
+  width: 1597px;
+  border: solid;
+  border-color: #1b1d21;
+  margin-left: -1316px;
+  bottom: 0;
+}
+
+.navbar {
+  /* text-align: left; */
+  width: 100%;
+  background-color: #19171d;
+  color: #9b9a9d;
+  /* position: fixed; */
+  height: auto;
+  z-index: 300;
+  left: 0;
+  padding-left: 20px;
+  border-style: solid;
+  border-width: 0.5px;
+  border-radius: 3px;
+  border-color: #343739;
+  border-top: 0px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.sidebarLogoName {
+  display: flex;
+  margin-left: 5px;
+}
+
+.channelNameSidebar {
+  font-family: 'Lato', sans-serif;
+  margin-top: 25px;
+  font-weight: bold;
+}
+
+.accordionChannels {
+  background-color: #19161d !important;
+  border: none;
+  color: #9b9a9d !important;
+}
+
+.accordion-button {
+  background-color: #19161d !important;
+  color: #9b9a9d !important;
+}
+
+.accordion-item {
+  color: #9b9a9d !important;
+  background-color: #19161d !important;
+  border: none;
+  text-align: left !important;
+  float: left !important;
+}
+
+.accordionStyle {
+    background-color: #19161d !important;
+    color: #9b9a9d !important;
+}
+
+.accordion-button {
+  color: #9b9a9d !important;
+}
+
+.collapsed {
+  color: #9b9a9d !important;
+}
+
+.listItemsChannels {
+  text-align: left !important;
+  float: left !important;
+}
+
+ul {
+  list-style-type: none !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+.bottomSidebar {
+  display: flex;
+  flex-direction: column;
+}
+
+.profilepageDiv {
+  display: flex;
+  flex-direction: column;
+  width: 70%;
+}
+
+.mainProfilePage {
+  margin-left: 300px;
+  margin-top: 60px;
+}
+
+.profileSidebar {
+  margin-right: 200px;
+}
+
+.profileBtn {
+  background-color: none;
+  color: #cfd0d1;
+}
+
+.signOutBtn {
+  background-color: none;
+  color: #cfd0d1;
+}
+
+.profileDropdownBottomDiv {
+  background-color: #242529;
+  text-align: center;
+}
+
+.threadOffcanvas {
+  border-style: solid;
+  border-width: 0.5px;
+  border-radius: 3px;
+  border-color: #343739;
+}
+
+.navbarContents {
+  display: flex;
+}
+
+.update-user {
+  display: flex;
+  justify-content: center;
+}
+
+form {
+  width: 60%;
+}
+
+a {
+color:#9b9a9d;
 }

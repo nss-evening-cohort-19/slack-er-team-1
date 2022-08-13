@@ -20,21 +20,22 @@ function Home() {
 
   useEffect(() => {
     getThePosts();
-  }, [posts]);
+  }, []);
   return (
-    <div>
-      <br />
-      <Sidebar />
-      <div className="postCardsDiv">
-        <div className="text-center my-4 teamCardsDiv">
-          <div className="d-flex flex-wrap postsCardContainer">
-            {filteredPosts?.map((post) => (
-              <PostCard key={post?.firebaseKey} setMessageToEdit={setMessageToEdit} postObj={post} posts={posts} onUpdate={getThePosts} />
-            ))}
+    <div className="mainBody">
+      <Sidebar className="sidebarDiv" />
+      <div className="pageContent">
+        <div className="postCardsDiv">
+          <div className="teamCardsDiv">
+            <div className="d-flex flex-wrap postsCardContainer">
+              {filteredPosts?.map((post) => (
+                <PostCard key={post?.firebaseKey} setMessageToEdit={setMessageToEdit} postObj={post} posts={posts} onUpdate={getThePosts} />
+              ))}
+            </div>
           </div>
         </div>
+        <TextInput key={user.firebaseKey} postsArray={posts} onUpdate={getThePosts} messageToEdit={messageToEdit} />
       </div>
-      <TextInput key={user.firebaseKey} postsArray={posts} onUpdate={getThePosts} messageToEdit={messageToEdit} />
     </div>
   );
 }

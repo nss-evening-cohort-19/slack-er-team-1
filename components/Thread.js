@@ -21,10 +21,10 @@ export default function Thread({
   }, []);
   return (
     <>
-      <Button onClick={toggleShow}>
-        {messageNum}
+      <Button className="repliesNumBtn" onClick={toggleShow}>
+        {messageNum} replies
       </Button>
-      <Offcanvas show={show} placement="end" onHide={handleClose} scroll="true">
+      <Offcanvas className="threadOffcanvas" show={show} placement="end" onHide={handleClose} scroll="true">
         <Offcanvas.Header closeButton>
           <Offcanvas.Title>Thread insert channel name</Offcanvas.Title>
         </Offcanvas.Header>
