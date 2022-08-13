@@ -17,19 +17,21 @@ export default function Profile() {
   }, []);
 
   return (
-    <div>
-      <Sidebar />
-      <div className="profile">
-        {member?.map((memberProfile) => (
-          <>
-            <User userObj={memberProfile} />
-            <Link passHref href={`/users/edit/${memberProfile.firebaseKey}`}>
-              <Button type="button" className={memberProfile.uid !== user.uid ? 'noShow' : ''} variant="outline-success">
-                Edit Profile
-              </Button>
-            </Link>
-          </>
-        ))}
+    <div className="profilePageDiv">
+      <Sidebar className="profileSidebar" />
+      <div className="mainProfilePage">
+        <div className="profile">
+          {member?.map((memberProfile) => (
+            <>
+              <User userObj={memberProfile} />
+              <Link passHref href={`/users/edit/${memberProfile.firebaseKey}`}>
+                <Button type="button" className={memberProfile.uid !== user.uid ? 'noShow' : ''} variant="outline-success">
+                  Edit Profile
+                </Button>
+              </Link>
+            </>
+          ))}
+        </div>
       </div>
     </div>
   );

@@ -254,6 +254,7 @@ body {
 
 .profile {
   color: white;
+  margin-top: 20px;
 }
 
 .logo {
@@ -266,12 +267,10 @@ body {
   display: none;
 }
 
-
 .icon {
   height: 20px;
   padding: 2px;
 }
-
  
 .postOptions {
   background-color: #1b1d21;
@@ -403,4 +402,19 @@ ul {
 .bottomSidebar {
   display: flex;
   flex-direction: column;
+}
+
+.profilepageDiv {
+  display: flex;
+  flex-direction: column;
+  width: 70%;
+}
+
+.mainProfilePage {
+  margin-left: 300px;
+  margin-top: 60px;
+}
+
+.profileSidebar {
+  margin-right: 200px;
 }
