@@ -9,7 +9,6 @@ import { joiningChannel } from '../api/mergedData';
 
 export default function Sidebar() {
   const [channelList, setChannelList] = useState([]);
-  // const [joinTable, setJoinTable] = useState([]);
   const { user } = useAuth();
 
   useEffect(() => {
