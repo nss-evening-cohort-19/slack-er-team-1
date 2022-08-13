@@ -32,7 +32,7 @@ const createPost = (postObj) => new Promise((resolve, reject) => {
     .then((response) => {
       const payload = { firebaseKey: response.data.name };
       axios.patch(`${dbUrl}/posts/${response.data.name}.json`, payload).then(() => {
-        getPosts(postObj.uid).then((userArray) => resolve(userArray));
+        getPosts(payload.uid).then((userArray) => resolve(userArray));
       });
     }).catch((error) => reject(error));
 });
@@ -54,7 +54,6 @@ const updatePost = (firebaseKey, payload) => new Promise((resolve, reject) => {
     .then(() => getPosts(payload.uid)).then(resolve)
     .catch(reject);
 });
-
 const getPostsByChannel = (postObj) => new Promise((resolve, reject) => {
   axios.patch(`${dbUrl}/posts/${postObj.channelId}.json`, postObj)
     .then(() => getPosts(postObj.uid)).then(resolve)
