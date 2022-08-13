@@ -18,7 +18,7 @@ body {
 .mainBody {
   display: flex;
   width: 100%; 
-  margin-top: 65px;
+  margin-top: 0px;
 }
 
 .pageContent {
@@ -470,7 +470,7 @@ ul {
 
 .mainProfilePage {
   margin-left: 300px;
-  margin-top: 60px;
+  margin-top: -18px;
 }
 
 .profileSidebar {
@@ -514,4 +514,30 @@ form {
 
 a {
 color:#9b9a9d;
+}
+
+#__next > nav {
+  position: fixed;
+  margin-bottom: 100px;
+}
+
+#staticBackdrop {
+  margin-top: 65px;;
+}
+
+#__next > div > div > div > nav {
+  position: fixed;
+  background-color:#222529 !important;
+  border: none;
+  color: #9b9a9d !important;
+  font-size: large;
+  width: 80%;
+}
+
+#__next > div > div > div > nav > div > span {
+  color: white !important;
+}
+
+#__next > div > div > div > div.container-fluid.post-container > div:nth-child(1) > div > form {
+  width: 80%;
 }
