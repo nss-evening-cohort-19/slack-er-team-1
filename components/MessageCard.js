@@ -2,15 +2,12 @@
 import PropTypes from 'prop-types';
 
 import { useAuth } from '../utils/context/authContext';
-import { deleteSingleMessage, getSingleMessage } from '../api/messagesData';
+import { deleteSingleMessage } from '../api/messagesData';
 
-export default function MessageCard({ messageObj, onUpdate }) {
+export default function MessageCard({ messageObj, onUpdate, setReplyToEdit }) {
   const { user } = useAuth();
   const handleDelete = () => {
     deleteSingleMessage(messageObj.firebaseKey).then(() => onUpdate());
-  };
-  const editMessage = () => {
-    getSingleMessage(messageObj.firebaseKey).then(() => onUpdate());
   };
 
   return (
@@ -27,7 +24,7 @@ export default function MessageCard({ messageObj, onUpdate }) {
         user.uid === messageObj.uid
           ? (
             <>
-              <button type="button" className="editMessage" onClick={editMessage}>Edit Reply</button>
+              <button type="button" className="editMessage" onClick={() => setReplyToEdit(messageObj)}>Edit Reply</button>
               <button type="button" className="deleteMessage" onClick={handleDelete}>Delete Reply</button>
             </>
           )
@@ -53,6 +50,7 @@ MessageCard.propTypes = {
     },
   ),
   onUpdate: PropTypes.func.isRequired,
+  setReplyToEdit: PropTypes.func.isRequired,
 };
 MessageCard.defaultProps = {
   messageObj: PropTypes.shape(

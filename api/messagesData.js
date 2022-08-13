@@ -49,9 +49,9 @@ const deleteSingleMessage = (firebaseKey) => new Promise((resolve, reject) => {
     .catch((error) => reject(error));
 });
 
-const updateMessage = (messageObj) => new Promise((resolve, reject) => {
-  axios.patch(`${dbUrl}/messages/${messageObj.firebaseKey}.json`, messageObj)
-    .then(() => getMessages(messageObj.uid)).then(resolve)
+const updateMessage = (firebaseKey, payload) => new Promise((resolve, reject) => {
+  axios.patch(`${dbUrl}/messages/${firebaseKey}.json`, payload)
+    .then(() => getMessages(payload.uid)).then(resolve)
     .catch(reject);
 });
 

@@ -91,7 +91,7 @@ PostCard.propTypes = {
     },
   ),
   onUpdate: PropTypes.func.isRequired,
-  setMessageToEdit: PropTypes.func.isRequired,
+  setMessageToEdit: PropTypes.func,
 };
 
 PostCard.defaultProps = {
@@ -103,4 +103,5 @@ PostCard.defaultProps = {
       reactions: '',
     },
   ),
+  setMessageToEdit: () => {},
 };
