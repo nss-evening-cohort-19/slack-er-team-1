@@ -1,4 +1,7 @@
 @import 'bootstrap/dist/css/bootstrap.css';
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Lato:wght@300;700&display=swap');
 
 
@@ -25,22 +28,25 @@ body {
 }
 
 a {
-  color: black;
+  color: #cbcccd;
   text-decoration: none;
   font-family: 'Lato', sans-serif;
 }
 * {
   box-sizing: border-box;
 }
+
 body {
   background-color: #1b1d21;
   font-family: 'Lato', sans-serif;
 }
+
 .teamCardsDiv {
   display: flex;
   flex-direction: column;
   width: 100%;
 }
+
 .postsCardContainer {
   display: flex;
   flex-direction: column;
@@ -49,12 +55,14 @@ body {
   margin-left: 275px;
   margin-bottom: 500px;
 }
+
 .postCardsDiv {
   display: flex;
   flex-direction: row;
   width: 100%;
   position: relative;
 }
+
 .postCard {
   color: #cfd0d1;
   font-family: 'Lato', sans-serif;
@@ -68,16 +76,19 @@ body {
 .postCard:hover {
   background-color: #232529;
 }
+
 .gutter {
   display: flex;
   flex-shrink: 0;
   margin-right: 8px;
 }
+
 .userProfileHover {
     display: inline-flex;
     height: fit-content;
     width: fit-content;
 }
+
 .photoBtn {
   background: none;
   border: 0;
@@ -91,6 +102,7 @@ body {
   text-align: initial;
   vertical-align: initial;
 }
+
 .messagesCardContainer {
   flex-flow: row;
   font-family: 'Lato', sans-serif;
@@ -122,17 +134,20 @@ body {
   color: white;
   border: none;
 }
+
 .editMessage:hover {
   background-color: #232529;
 }
+
 .deleteMessage:hover {
   background-color: #232529;
 }
+
 .sidebarStyle {
   text-align: left;
   width: 250px;
   background-color: #19171d;
-  color: #9b9a9d;
+  color: #c6c8c9;
   position: fixed;
   height: 100%;
   z-index: 20;
@@ -144,12 +159,15 @@ body {
   border-color: #343739;
   border-top: 0px;
 }
+
 .post-container {
   height: 100vh;
 }
+
 .channel-title {
   color: white;
 }
+
 .mainPostContainer {
   display: flex;
   color: #cfd0d1;
@@ -178,10 +196,12 @@ body {
 .commentInputContainer:focus {
   border: none !important;
 }
+
 .commentInputContainer > .form-control {
   border: none !important;
   background-color: #232529 !important;
 }
+
 .commentInputContainer::selection > .form-control {
   border: none !important;
   background-color: #232529 !important;
@@ -200,23 +220,22 @@ body {
   border: none !important;
   color: #cfd0d1 !important;
 }
+
 .postContentDiv:focus > .form-control {
   border: none !important;
 }
+
 .postContentDiv::selection > .form-control{
   background-color: #232529 !important;
   height: 100px;
   border: none !important;
 }
 
-<<<<<<< HEAD
-=======
 .postContentDiv:active{
   background-color: #232529 !important;
   height: 100px;
   border: none !important;
 }
->>>>>>> main
 .postContentDiv:hover {
   background-color: #232529;
 }
@@ -236,11 +255,13 @@ body {
   display: flex;
   flex-direction: column;
 }
+
 .leftToolbar {
   background-color: #232529;
   width: 90%;
   justify-self: flex-start;
 }
+
 .all-channels-page {
   background-color: white;
 }
@@ -323,6 +344,7 @@ body {
   border-radius: 3px;
   border-color: #343739;
 }
+
 #__next {
   width: 100%;
 }
@@ -339,11 +361,9 @@ body {
 }
 
 .navbar {
-  /* text-align: left; */
   width: 100%;
   background-color: #19171d;
   color: #9b9a9d;
-  /* position: fixed; */
   height: auto;
   z-index: 300;
   left: 0;
@@ -371,16 +391,16 @@ body {
 .accordionChannels {
   background-color: #19161d !important;
   border: none;
-  color: #9b9a9d !important;
+  color: #c6c8c9 !important;
 }
 
 .accordion-button {
   background-color: #19161d !important;
-  color: #9b9a9d !important;
+  color: #c6c8c9 !important;
 }
 
 .accordion-item {
-  color: #9b9a9d !important;
+  color: #c6c8c9 !important;
   background-color: #19161d !important;
   border: none;
   text-align: left !important;
@@ -389,15 +409,15 @@ body {
 
 .accordionStyle {
     background-color: #19161d !important;
-    color: #9b9a9d !important;
+    color: #c6c8c9 !important;
 }
 
 .accordion-button {
-  color: #9b9a9d !important;
+  color: #c6c8c9 !important;
 }
 
 .collapsed {
-  color: #9b9a9d !important;
+  color: #c6c8c9 !important;
 }
 
 .listItemsChannels {
@@ -414,6 +434,32 @@ ul {
 .bottomSidebar {
   display: flex;
   flex-direction: column;
+}
+
+.threadStyle {
+  background-color: #222529;
+  color: #cbcccd;
+}
+
+.threadReplyBtn {
+  background-color: transparent;
+  border: none;
+}
+
+.threadReplyBtn:hover {
+  background-color: transparent;
+  border: none;
+}
+
+.threadReplyBtn:active {
+  background-color: transparent;
+  border: none;
+}
+
+.messageContent {
+  background-color: #222529;
+  width: 100%;
+  color: #cbcccd;
 }
 
 .profilepageDiv {
