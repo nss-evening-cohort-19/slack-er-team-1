@@ -16,7 +16,7 @@ export default function EditUser() {
   return (
     <>
       <Sidebar />
-      <CreateUserForm obj={editUser} />
+      <CreateUserForm obj={editUser} className="update-user" />
     </>
   );
 }

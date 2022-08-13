@@ -9,31 +9,28 @@ import ProfileDropdown from './ProfileDropdown';
 export default function NavBar() {
   const { user } = useAuth();
   return (
-    <nav className="navbar navbar-expand-md navbar-dark bg-dark">
-      <div className="container-fluid">
+    <nav className="navbar navbar-expand-md navbar-dark bg-dark .me-auto .ml-auto">
+      <div className="container-fluid navbarContents">
         <Link passHref href="/">
           <h3 className="navbar-brand" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo01">
             <b>Slack-er</b>
           </h3>
         </Link>
-        <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
-          <span className="navbar-toggler-icon" />
-        </button>
 
-        <div className="collapse navbar-collapse" id="navbarTogglerDemo01">
-          <ul className="navbar-nav me-auto">
+        <div className="navbarProfile" id="navbarTogglerDemo01">
+          <ul className="navbar-nav">
             <li className="nav-item dropdown">
               <a className="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">
                 <img src={user.photoURL} width="30px" height="30px" alt="user" className="user-icon" />
               </a>
-              <ul className="dropdown-menu">
-                <div>
+              <ul className="dropdown-menu dropdown-menu-end">
+                <div className="profileDropdownBottomDiv">
                   <ProfileDropdown />
-                  <button type="button" className="btn" onClick={signOut}>
+                  <button type="button" className="signOutBtn btn" onClick={signOut}>
                     Sign Out
                   </button>
                   <Link passHref href="/profile">
-                    <button type="button" className="btn">
+                    <button type="button" className="profileBtn btn">
                       Profile
                     </button>
                   </Link>
