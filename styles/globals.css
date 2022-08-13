@@ -151,6 +151,11 @@ body {
   z-index: 20;
   left: 0;
   padding-left: 20px;
+  border-style: solid;
+  border-width: 0.5px;
+  border-radius: 3px;
+  border-color: #343739;
+  border-top: 0px;
 }
 
 .post-container {
@@ -323,6 +328,12 @@ body {
   flex-direction: column;
   align-items: center;
   padding: 5px;
+  background-color: #232529;
+  color: #cfd0d1;
+  border-style: solid;
+  border-width: 0.5px;
+  border-radius: 3px;
+  border-color: #343739;
 }
 #__next {
   width: 100%;
@@ -340,9 +351,22 @@ body {
 }
 
 .navbar {
-  position: fixed;
-  z-index: 300;
+  /* text-align: left; */
   width: 100%;
+  background-color: #19171d;
+  color: #9b9a9d;
+  /* position: fixed; */
+  height: auto;
+  z-index: 300;
+  left: 0;
+  padding-left: 20px;
+  border-style: solid;
+  border-width: 0.5px;
+  border-radius: 3px;
+  border-color: #343739;
+  border-top: 0px;
+  display: flex;
+  justify-content: space-between;
 }
 
 .sidebarLogoName {
@@ -417,4 +441,30 @@ ul {
 
 .profileSidebar {
   margin-right: 200px;
+}
+
+.profileBtn {
+  background-color: none;
+  color: #cfd0d1;
+}
+
+.signOutBtn {
+  background-color: none;
+  color: #cfd0d1;
+}
+
+.profileDropdownBottomDiv {
+  background-color: #242529;
+  text-align: center;
+}
+
+.threadOffcanvas {
+  border-style: solid;
+  border-width: 0.5px;
+  border-radius: 3px;
+  border-color: #343739;
+}
+
+.navbarContents {
+  display: flex;
 }
