@@ -2,6 +2,8 @@
 import React, { useEffect, useState } from 'react';
 import Link from 'next/link';
 import Accordion from 'react-bootstrap/Accordion';
+import { BsChatText } from 'react-icons/bs';
+import { FaComments, FaAt, FaEllipsisV } from 'react-icons/fa';
 import { useAuth } from '../utils/context/authContext';
 import { getChannelsByUid } from '../api/channelData';
 
@@ -24,26 +26,28 @@ export default function Sidebar() {
       <hr />
       <div className="offcanvas-body">
         <div>
-          <img src="https://cdn-icons-png.flaticon.com/512/3884/3884366.png" alt="threads" className="icon" />
+          <BsChatText className="icon" />
           Threads
         </div>
         <div>
-          <img src="https://cdn-icons-png.flaticon.com/512/892/892177.png" alt="direct-messages" className="icon" />
+          <FaComments className="icon" />
           Direct messages
         </div>
         <div>
-          <img src="https://cdn-icons.flaticon.com/png/512/3060/premium/3060001.png?token=exp=1660317768~hmac=7c6f42527516e2710ec15a1c482bce44" alt="mentions-and-reactions" className="icon" />
+          <FaAt className="icon" />
           Mentions and reactions
         </div>
         <div>
-          <img src="https://cdn-icons.flaticon.com/png/512/4023/premium/4023094.png?token=exp=1660317886~hmac=2a79b90474e5cd18f1bfe0b6edc87f61" alt="more" className="icon" />
+          <FaEllipsisV className="icon" />
           More
         </div>
         <hr />
         <div className="bottomSidebar">
           <Accordion className="accordionChannels bg-dark text-light" defaultActiveKey="0">
             <Accordion.Item className="accordionChannels text-light" eventKey="1">
-              <Accordion.Header style={{ color: '#9b9a9d' }} className="accordionChannels text-light">Channels</Accordion.Header>
+              <Accordion.Header style={{ color: '#9b9a9d' }} className="accordionChannels text-light">
+                Channels
+              </Accordion.Header>
               <Accordion.Body className="accordionChannels text-light">
                 <ul className="accordionStyle">
                   {channelList.map((channel) => (
