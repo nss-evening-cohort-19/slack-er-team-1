@@ -1,7 +1,7 @@
-import { getSingleChannel } from './channelData';
+// import { getSingleChannel } from './channelData';
 import { getMessagesByPost } from './messagesData';
 import { getSinglePost } from './postsData';
-import { getJoinChannels } from './joinData';
+// import { getJoinChannels } from './joinData';
 
 // GET COMMENTS BY THREAD
 const getMessagesOnPost = (postFirebaseKey) => new Promise((resolve, reject) => {
@@ -13,15 +13,14 @@ const getMessagesOnPost = (postFirebaseKey) => new Promise((resolve, reject) => 
 });
 
 // JOIN A CHANNEL
-const joiningChannel = (uid) => new Promise((resolve, reject) => {
-  getJoinChannels(uid).then((joinArray) => {
-    const userChannel = joinArray.map((joinObj) => getSingleChannel(joinObj.channelId)).then(() => {
-      resolve(userChannel);
-    });
-  }).catch(reject);
-});
+// const joiningChannel = (uid) => new Promise((resolve, reject) => {
+//   getJoinChannels(uid).then((joinArray) => {
+//     const userChannel = joinArray.map((joinObj) => getSingleChannel(joinObj.channelId)).then(() => {
+//       resolve(userChannel);
+//     });
+//   }).catch(reject);
+// });
 
-export {
+export default {
   getMessagesOnPost,
-  joiningChannel,
 };
